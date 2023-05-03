@@ -3,6 +3,12 @@ module.exports = {
   content: ["./app/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontSize: {
+        title: '3rem',
+        subtitle: '1.5rem',
+        body: '1rem',
+        aside: '0.8rem'
+      },
       colors: {
         "Tea_green": "#c2efb3",
         "Cadet_gray": "#97abb1",
@@ -17,6 +23,14 @@ module.exports = {
       },
       backgroundImage: {
         'paper': 'url("/img/ep_naturalwhite.png")'
+      },
+      fontFamily: {
+        'sans': ['Quicksand', 'sans-serif']
+      },
+      fontWeight: {
+        'light': '300',
+        'base': '500',
+        'bold': '700'
       }
     },
   },
