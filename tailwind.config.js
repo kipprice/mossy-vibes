@@ -9,6 +9,18 @@ module.exports = {
         body: '1rem',
         aside: '0.8rem'
       },
+      width: {
+        vw_50: '50vw',
+        vw_25: '25vw',
+        vh_50: '50vh',
+        vh_25: '25vh',
+      },
+      height: {
+        vw_50: '50vw',
+        vw_25: '25vw',
+        vh_50: '50vh',
+        vh_25: '25vh',
+      },
       colors: {
         "Tea_green": "#c2efb3",
         "Cadet_gray": "#97abb1",
@@ -31,6 +43,23 @@ module.exports = {
         'light': '300',
         'base': '500',
         'bold': '700'
+      },
+      keyframes: {
+        breathe: {
+          '0%': { transform: 'scale(0.8) rotate(0deg)' },
+          '42%': { transform: 'scale(1.4) rotate(180deg)' },
+          '56%': { transform: 'scale(1.4) rotate(180deg)' },
+          '100%': { transform: 'scale(0.8) rotate(360deg)' }
+        },
+        fade: {
+          '0%': { opacity: 1 },
+          '100%': { opacity: 0.3 }
+        }
+      },
+      animation: {
+        'breathe-10': 'breathe 10s ease-in-out infinite',
+        'breathe-12': 'breathe 12s ease-in-out infinite',
+        'breathe-18': 'breathe 18s ease-in-out infinite',
       }
     },
   },
