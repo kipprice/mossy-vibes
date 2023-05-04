@@ -4,10 +4,18 @@ export type Exercise = {
   prompts: Prompt[]
 }
 
+export type ExerciseDetails = {
+  id: string
+  title: string
+  lengthInSeconds: number
+  isFavorite: boolean
+  hasCompleted: boolean
+}
+
 export type Prompt = {
   content: string
-  delayBeforeInMs?: number
-  delayAfterInMs?: number
+  countInSec?: number
+  countByBreath?: 'in' | 'hold' | 'out'
 }
 
 export type User = {

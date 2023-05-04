@@ -1,6 +1,6 @@
 import { exercises } from '~/data/exercises'
 
-export const selectExercise = () => {
+export const selectRandomExercise = () => {
   // for now, this just random from the exercises we have
   const length = exercises.length
   return exercises[Math.floor(Math.random() * length)]

@@ -19,14 +19,16 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>Lexical Meditation</title>
+        <title>Shh...</title>
         <Meta />
         <link rel="manifest" href="/resources/manifest.webmanifest" />
         <Links />
       </head>
       <body className="h-full w-full p-0 m-0">
         <div className="left-0 top-0 fixed -z-10 w-screen h-screen bg-paper opacity-40" />
-        <Outlet />
+        <div className="bg-green-dark bg-opacity-80 w-full h-full text-white">
+          <Outlet />
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

@@ -22,16 +22,17 @@ module.exports = {
         vh_25: '25vh',
       },
       colors: {
-        "Tea_green": "#c2efb3",
-        "Cadet_gray": "#97abb1",
-        "Dim_gray": "#746f72",
-        "Coyote": "#735f3d",
-        "Drab_dark_brown": "#594a26",
-        "Maize": "#fff05a",
-        "Sunglow": "#ffd25a",
-        "Sandy_brown": "#ffaa5a",
-        "Bittersweet": "#ff785a",
-        "Pine_green": "#136F63"
+        'yellow': '#FFD25A',
+        'orange-light': '#FFAA5A',
+        'orange-dark': '#FF785A',
+        'green-dark': '#136F63',
+        'green-light': '#C2E1B8',
+        'brown-dark': '#312924',
+        'brown-med': '#594226',
+        'brown-light': '#B09668',
+        'grey': '#746F72',
+        'off-white': '#F6F0E4',
+        'off-black': '#232220'
       },
       backgroundImage: {
         'paper': 'url("/img/ep_naturalwhite.png")'
@@ -47,8 +48,8 @@ module.exports = {
       keyframes: {
         breathe: {
           '0%': { transform: 'scale(0.8) rotate(0deg)' },
-          '42%': { transform: 'scale(1.4) rotate(180deg)' },
-          '56%': { transform: 'scale(1.4) rotate(180deg)' },
+          '21%': { transform: 'scale(1.4) rotate(120deg)' },
+          '58%': { transform: 'scale(1.4) rotate(240deg)' },
           '100%': { transform: 'scale(0.8) rotate(360deg)' }
         },
         fade: {
@@ -57,9 +58,7 @@ module.exports = {
         }
       },
       animation: {
-        'breathe-10': 'breathe 10s ease-in-out infinite',
-        'breathe-12': 'breathe 12s ease-in-out infinite',
-        'breathe-18': 'breathe 18s ease-in-out infinite',
+        'breathe': 'breathe 19s ease infinite',
       }
     },
   },
