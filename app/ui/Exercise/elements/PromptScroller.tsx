@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React, { useEffect } from 'react'
-import type { Exercise } from '../data/_types'
-import { getPromptCountInMs } from '../utils/getCounts'
+import type { Exercise } from '../../../data/_types'
+import { getPromptCountInMs } from '../../../utils/getCounts'
 import { PromptDisplay } from './Prompt'
 
 export type PromptScrollerProps = {

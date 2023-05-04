@@ -10,16 +10,18 @@ module.exports = {
         aside: '0.8rem'
       },
       width: {
-        vw_50: '50vw',
-        vw_25: '25vw',
-        vh_50: '50vh',
-        vh_25: '25vh',
+        '50vw': '50vw',
+        '25vw': '25vw',
+        '50vh': '50vh',
+        '25vh': '25vh',
+        '10vh': '10vh'
       },
       height: {
-        vw_50: '50vw',
-        vw_25: '25vw',
-        vh_50: '50vh',
-        vh_25: '25vh',
+        '50vw': '50vw',
+        '25vw': '25vw',
+        '50vh': '50vh',
+        '25vh': '25vh',
+        '10vh': '10vh'
       },
       colors: {
         'yellow': '#FFD25A',

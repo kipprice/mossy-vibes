@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react'
 import type { Exercise } from '../../data/_types'
+import { LogFooter } from '../shared/LogFooter'
+import { PageHeader } from '../shared/PageHeader'
 import { BreathAnimation } from './elements/BreathAnimation'
 import { PromptScroller } from './elements/PromptScroller'
 
@@ -20,9 +22,7 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
 
   return (
     <div className="w-full h-full flex flex-col justify-center">
-      <div className="text-sm text-center font-light p-2  bg-black bg-opacity-20">
-        {exercise.title}
-      </div>
+      <PageHeader title={exercise.title} />
       <div className="flex-grow" />
       <PromptScroller
         exercise={exercise}
@@ -32,6 +32,7 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
 
       <BreathAnimation />
       <div className="flex-grow" />
+      <LogFooter />
     </div>
   )
 }

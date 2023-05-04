@@ -4,8 +4,8 @@ import { json } from '@remix-run/node'
 export let loader: LoaderFunction = async () => {
   return json(
     {
-      short_name: 'Shh...',
-      name: 'Shh...',
+      short_name: 'Mossy Vibes',
+      name: 'Mossy Vibes',
       start_url: '/',
       display: 'standalone',
       background_color: '#136F63',

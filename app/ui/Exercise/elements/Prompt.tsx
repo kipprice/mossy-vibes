@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React from 'react'
-import { Prompt } from '../data/_types'
-import { getPromptCount } from '../utils/getCounts'
+import type { Prompt } from '../../../data/_types'
+import { getPromptCount } from '../../../utils/getCounts'
 
 export type PromptDisplayProps = {
   idx: number

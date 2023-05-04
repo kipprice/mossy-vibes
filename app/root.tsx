@@ -26,8 +26,10 @@ export default function App() {
       </head>
       <body className="h-full w-full p-0 m-0">
         <div className="left-0 top-0 fixed -z-10 w-screen h-screen bg-paper opacity-40" />
-        <div className="bg-green-dark bg-opacity-80 w-full h-full text-white">
-          <Outlet />
+        <div className="bg-green-dark bg-opacity-80 w-full h-full text-off-white flex flex-col items-center">
+          <div className="w-full h-full max-w-3xl">
+            <Outlet />
+          </div>
         </div>
         <ScrollRestoration />
         <Scripts />
