@@ -1,4 +1,5 @@
 import { loadAllExercises } from '../server/loadAllExercises'
+import { loadExercise } from './loadExercise'
 
 export const selectRandomExercise = async () => {
   const exercises = await loadAllExercises()
@@ -9,13 +10,6 @@ export const selectRandomExercise = async () => {
 }
 
 export const findExercise = async (exerciseId: string) => {
-  const exercises = await loadAllExercises()
-
-  for (const ex of exercises) {
-    if (ex.id !== exerciseId) {
-      continue
-    }
-    return ex
-  }
-  return null
+  const exercise = await loadExercise(exerciseId)
+  return exercise || null
 }
