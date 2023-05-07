@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import type { UserData } from '../../_types'
 import { getUserData, setUserData, useAsyncMemo } from '../../utils/client'
-import { FormButton } from './FormButton'
+import { FormButton } from '../shared'
 
 export type ReadingSpeedInputProps = {}
 

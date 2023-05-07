@@ -1,6 +1,7 @@
 import { useNavigate } from '@remix-run/react'
-import React from 'react'
-import type { ExerciseDetails } from '../../_types'
+import React, { useCallback, useEffect, useState } from 'react'
+import type { ExerciseDetails, UserData } from '../../_types'
+import { getUserData, setUserData, useAsyncMemo } from '../../utils/client'
 import { Icon } from '../shared'
 
 export type ExerciseLineProps = {
@@ -12,18 +13,46 @@ export const ExerciseLine: React.FC<ExerciseLineProps> = ({
 }) => {
   const navigate = useNavigate()
 
+  const userData = useAsyncMemo<UserData>(getUserData, [])
+
+  const [localUser, setLocalUser] = useState<UserData>()
+
+  useEffect(() => {
+    if (!userData) {
+      return
+    }
+    setLocalUser(userData)
+  }, [userData])
+
+  const onChangeFavorite = useCallback(() => {
+    const updatedData: UserData = {
+      ...localUser,
+      favoriteExercises: [...(localUser?.favoriteExercises || [])],
+    }
+    const searchIdx =
+      updatedData.favoriteExercises?.indexOf(exerciseDetails.id) ?? -1
+
+    if (searchIdx === -1) {
+      updatedData.favoriteExercises?.push(exerciseDetails.id)
+    } else {
+      updatedData.favoriteExercises?.splice(searchIdx, 1)
+    }
+    setLocalUser(updatedData)
+    setUserData(updatedData)
+  }, [exerciseDetails.id, localUser])
+
+  const isFavorite = localUser?.favoriteExercises
+    ? localUser?.favoriteExercises?.indexOf(exerciseDetails.id) !== -1
+    : false
   const lengthInMinutes = Math.ceil(exerciseDetails.lengthInSeconds / 60)
 
   return (
-    <div
-      onClick={() => navigate(`/exercises/${exerciseDetails.id}`)}
-      className="text-left flex flex-row w-full gap-4 "
-    >
+    <div className="text-left flex flex-row w-full gap-4 ">
       <button
-        onClick={() => null}
+        onClick={onChangeFavorite}
         className="w-9 flex justify-center items-center"
       >
-        {exerciseDetails.isFavorite ? (
+        {isFavorite ? (
           <Icon
             iconFileName="star_fill"
             className="text-orange-light bg-transparent w-8 h-8"

@@ -1,2 +1,5 @@
 export * from './Button'
 export * from './Icon'
+export * from './FormButton'
+export * from './LogFooter'
+export * from './PageHeader'
