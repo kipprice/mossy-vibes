@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion'
 import React, { useEffect } from 'react'
-import type { Exercise } from '../../../data/_types'
-import { getPromptCountInMs } from '../../../utils/getCounts'
-import { PromptDisplay } from './Prompt'
+import type { ClientExercise } from '../../../_types'
+import { WordScroller } from './WordScroller'
 
 export type PromptScrollerProps = {
-  exercise: Exercise
+  exercise: ClientExercise
   currentPromptIdx: number
   onNextPrompt: () => void
 }
+
+const MILLISECONDS_PER_SECOND = 1000
 
 export const PromptScroller: React.FC<PromptScrollerProps> = ({
   exercise,
@@ -27,7 +28,7 @@ export const PromptScroller: React.FC<PromptScrollerProps> = ({
 
     const tmId = setTimeout(() => {
       onNextPrompt()
-    }, getPromptCountInMs(prompt))
+    }, prompt.lengthInSeconds * MILLISECONDS_PER_SECOND)
 
     return () => clearTimeout(tmId)
   }, [prompt, onNextPrompt, exercise?.prompts.length, currentPromptIdx])
@@ -42,14 +43,17 @@ export const PromptScroller: React.FC<PromptScrollerProps> = ({
         <motion.div className="text-md"> </motion.div>
       ) : null}
 
-      {exercise.prompts.map((p, pIdx) => (
-        <PromptDisplay
-          key={`prompt-${pIdx}`}
-          prompt={p}
-          idx={pIdx}
-          selectedIdx={currentPromptIdx}
-        />
-      ))}
+      {exercise.prompts.map((p, pIdx) => {
+        return pIdx === currentPromptIdx ? (
+          <WordScroller key={`prompt-${pIdx}`} prompt={p} />
+        ) : null
+        // <PromptDisplay
+        //   key={`prompt-${pIdx}`}
+        //   prompt={p}
+        //   idx={pIdx}
+        //   selectedIdx={currentPromptIdx}
+        // />
+      })}
     </motion.div>
   )
 }

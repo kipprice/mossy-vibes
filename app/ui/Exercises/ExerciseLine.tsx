@@ -1,6 +1,6 @@
 import { useNavigate } from '@remix-run/react'
 import React from 'react'
-import type { ExerciseDetails } from '../../data/_types'
+import type { ExerciseDetails } from '../../_types'
 import { Icon } from '../shared'
 
 export type ExerciseLineProps = {

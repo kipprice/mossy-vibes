@@ -1,12 +1,12 @@
 import { useNavigate } from '@remix-run/react'
 import React from 'react'
-import type { Exercise } from '../../data/_types'
+import type { ClientExercise } from '../../_types'
 import { Button } from '../shared/Button'
 import { LogFooter } from '../shared/LogFooter'
 import { PageHeader } from '../shared/PageHeader'
 
 export type ExerciseEndProps = {
-  exercise: Exercise
+  exercise: ClientExercise
 }
 
 export const ExerciseEnd: React.FC<ExerciseEndProps> = ({ exercise }) => {

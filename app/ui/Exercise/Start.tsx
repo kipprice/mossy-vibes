@@ -1,11 +1,11 @@
 import React from 'react'
-import type { Exercise } from '../../data/_types'
+import type { ClientExercise } from '../../_types'
 import { Button } from '../shared/Button'
 import { LogFooter } from '../shared/LogFooter'
 import { PageHeader } from '../shared/PageHeader'
 
 export type ExerciseStartProps = {
-  exercise: Exercise
+  exercise: ClientExercise
   onStart: () => void
 }
 

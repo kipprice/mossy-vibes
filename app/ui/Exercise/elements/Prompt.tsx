@@ -1,20 +1,17 @@
 import { motion } from 'framer-motion'
 import React from 'react'
-import type { Prompt } from '../../../data/_types'
-import { getPromptCount } from '../../../utils/getCounts'
+import type { ClientPrompt } from '../../../_types'
 
 export type PromptDisplayProps = {
   idx: number
-  prompt: Prompt
+  prompt: ClientPrompt
   selectedIdx: number
-  nextDelay?: number
 }
 
 export const PromptDisplay: React.FC<PromptDisplayProps> = ({
   idx,
   selectedIdx,
   prompt,
-  nextDelay = 2,
 }) => {
   const isSelected = idx === selectedIdx
   const isPrevious = idx === selectedIdx - 1
@@ -39,8 +36,8 @@ export const PromptDisplay: React.FC<PromptDisplayProps> = ({
         opacity: 0.2,
       }}
       transition={{
-        duration: getPromptCount(prompt) / 4,
-        delay: (getPromptCount(prompt) * 3) / 4,
+        duration: prompt.lengthInSeconds / 4,
+        delay: (prompt.lengthInSeconds * 3) / 4,
       }}
     >
       {isHidden ? null : prompt.content}

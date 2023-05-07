@@ -60,7 +60,7 @@ module.exports = {
         }
       },
       animation: {
-        'breathe': 'breathe 19s ease infinite',
+        'breathe': 'breathe 19s linear infinite',
       }
     },
   },
