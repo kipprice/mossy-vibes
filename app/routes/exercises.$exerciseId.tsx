@@ -28,8 +28,6 @@ export const ExercisePage: React.FC<ExercisePageProps> = () => {
     return getClientExercise(exercise, userData)
   }, [exercise])
 
-  console.log('--> client exercise', clientExercise, exercise)
-
   const [isStarted, setIsStarted] = useState(false)
   const [currentPromptIdx, setCurrentPromptIdx] = useState(0)
 
