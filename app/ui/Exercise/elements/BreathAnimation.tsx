@@ -11,7 +11,7 @@ export const BreathAnimation: React.FC<BreathAnimationProps> = ({}) => {
     <motion.div className="w-full flex items-center justify-center p-16">
       <motion.div className="bg-green-light rounded-full w-25vw h-25vw relative">
         <motion.div
-          className={`absolute border-2 border-dotted border-green-light ${
+          className={`absolute border-4 border-dotted border-green-light ${
             userData?.holdBreathInSeconds === 4
               ? 'animate-breath-quick'
               : userData?.holdBreathInSeconds === 10
