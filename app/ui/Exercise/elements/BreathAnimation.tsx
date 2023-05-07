@@ -16,7 +16,7 @@ export const BreathAnimation: React.FC<BreathAnimationProps> = ({}) => {
               ? 'animate-breath-quick'
               : userData?.holdBreathInSeconds === 10
               ? 'animate-breath-long'
-              : 'animate-breathe-standard'
+              : 'animate-breath-standard'
           } w-full h-full rounded-full`}
         ></motion.div>
       </motion.div>

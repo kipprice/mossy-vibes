@@ -72,7 +72,7 @@ module.exports = {
         }
       },
       animation: {
-        'breathe-standard': 'breathe-standard 19s linear infinite',
+        'breath-standard': 'breath-standard 19s linear infinite',
         'breath-quick': 'breath-quick 12s linear infinite',
         'breath-long': 'breath-long 30s linear infinite'
       }
