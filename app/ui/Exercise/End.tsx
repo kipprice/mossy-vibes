@@ -17,7 +17,9 @@ export const ExerciseEnd: React.FC<ExerciseEndProps> = ({ exercise }) => {
       <PageHeader title={exercise.title} />
       <div className="w-full h-full flex flex-col justify-center px-4 py-8">
         <div className="text-2xl text-center mb-8">All Done!</div>
-        <Button onClick={() => navigate('/')}>Back to Home</Button>
+        <Button onClick={() => navigate('/exercises')}>
+          Back to Exercises
+        </Button>
       </div>
       <LogFooter />
     </>
