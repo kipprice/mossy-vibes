@@ -4,7 +4,7 @@ import path from 'path'
 export const loadFile = async (filename: string) => {
   console.log(__dirname)
   const f = await fs.open(
-    path.join(__dirname, `../../models/${filename}.md`),
+    path.join(__dirname, `../../app/models/${filename}.md`),
     'r'
   )
   const out = []
