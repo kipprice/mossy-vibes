@@ -1,24 +1,24 @@
 import { motion } from 'framer-motion'
-import { get } from 'idb-keyval'
-import React, { useEffect, useState } from 'react'
-import type { ClientPrompt } from '../../../_types'
-import { DEFAULT_USER_DATA, USER_DATA_KEY } from '../../../_types'
-import { useAsyncMemo } from '../../../utils/client'
+import React, { useEffect, useMemo, useState } from 'react'
+import type { ClientPrompt, UserData } from '../../../_types'
 import { splitWords } from '../../../utils/shared'
 
 export type WordScrollerProps = {
   prompt: ClientPrompt
+  userData: UserData
 }
 
-export const WordScroller: React.FC<WordScrollerProps> = ({ prompt }) => {
+export const WordScroller: React.FC<WordScrollerProps> = ({
+  prompt,
+  userData,
+}) => {
   const [activeWordIdx, setActiveWordIdx] = useState(0)
 
   const words = splitWords(prompt.content)
 
-  const secondsPerWord = useAsyncMemo(async () => {
-    const userData = (await get(USER_DATA_KEY)) || DEFAULT_USER_DATA
+  const secondsPerWord = useMemo(() => {
     return 1 / (userData.readingSpeedInWpm / 60)
-  }, [])
+  }, [userData])
 
   useEffect(() => {
     if (!secondsPerWord) {

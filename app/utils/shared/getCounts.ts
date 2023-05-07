@@ -1,4 +1,5 @@
 import type { ParsedExercise, ParsedPrompt, UserData } from '../../_types'
+import { DEFAULT_USER_DATA } from '../../_types'
 import { DEFAULT_BREAK_IN_SECONDS } from '../../_types'
 import {
   DEFAULT_BREATH_HOLD_IN_SECONDS,
@@ -7,7 +8,6 @@ import {
   DEFAULT_READING_SPEED_IN_WPM,
 } from '../../_types'
 import { BREATH_PARTS_TO_WHOLE } from '../../_types'
-import { ceilToInterval } from './ceilToInterval'
 import { splitWords } from './splitWords'
 
 export const getExerciseCount = (
@@ -57,6 +57,8 @@ export const getPromptCount = (
     inBreathInSeconds: DEFAULT_BREATH_IN_IN_SECONDS,
     holdBreathInSeconds: DEFAULT_BREATH_HOLD_IN_SECONDS,
     outBreathInSeconds: DEFAULT_BREATH_OUT_IN_SECONDS,
+    favoriteExercises: [],
+    completedExercises: [],
   }
 ) => {
   // if this a prompt to toggle animation, return no length and no additional
@@ -209,4 +211,16 @@ export const getFullBreathLength = (
     getBreathCountFromType('hold', breathProps) +
     getBreathCountFromType('out', breathProps)
   )
+}
+
+export const getAnimationTiming = (userData: UserData = DEFAULT_USER_DATA) => {
+  const fullBreath = getFullBreathLength(userData)
+
+  const inBreathPercentage =
+    (userData.inBreathInSeconds || DEFAULT_BREATH_IN_IN_SECONDS) / fullBreath
+
+  const holdBreathPercentage =
+    (userData.holdBreathInSeconds || DEFAULT_BREATH_OUT_IN_SECONDS) / fullBreath
+
+  return [0, inBreathPercentage, inBreathPercentage + holdBreathPercentage, 1]
 }

@@ -20,12 +20,12 @@ export type Prompt = {
 }
 
 export type UserData = {
-  readingSpeedInWpm?: number
-  inBreathInSeconds?: number
-  holdBreathInSeconds?: number
-  outBreathInSeconds?: number
-  completedExercises?: string[]
-  favoriteExercises?: string[]
+  readingSpeedInWpm: number
+  inBreathInSeconds: number
+  holdBreathInSeconds: number
+  outBreathInSeconds: number
+  completedExercises: string[]
+  favoriteExercises: string[]
 }
 
 export type ParsedExercise = {
@@ -64,9 +64,11 @@ export const DEFAULT_READING_SPEED_IN_WPM = 150
 
 export const USER_DATA_KEY = 'user-data'
 
-export const DEFAULT_USER_DATA: UserData = {
+export const DEFAULT_USER_DATA: Required<UserData> = {
   readingSpeedInWpm: DEFAULT_READING_SPEED_IN_WPM,
   inBreathInSeconds: DEFAULT_BREATH_IN_IN_SECONDS,
   outBreathInSeconds: DEFAULT_BREATH_OUT_IN_SECONDS,
   holdBreathInSeconds: DEFAULT_BREATH_HOLD_IN_SECONDS,
+  favoriteExercises: [],
+  completedExercises: [],
 }

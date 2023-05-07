@@ -1,12 +1,14 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import React, { useEffect } from 'react'
-import type { ClientExercise } from '../../../_types'
+import type { ClientExercise, UserData } from '../../../_types'
 import { WordScroller } from './WordScroller'
 
 export type PromptScrollerProps = {
   exercise: ClientExercise
   currentPromptIdx: number
   onNextPrompt: () => void
+  onComplete: () => void
+  userData: UserData
 }
 
 const MILLISECONDS_PER_SECOND = 1000
@@ -15,6 +17,8 @@ export const PromptScroller: React.FC<PromptScrollerProps> = ({
   exercise,
   currentPromptIdx,
   onNextPrompt,
+  onComplete,
+  userData,
 }) => {
   const prompt = exercise.prompts[currentPromptIdx]
 
@@ -22,38 +26,36 @@ export const PromptScroller: React.FC<PromptScrollerProps> = ({
     if (!prompt) {
       return
     }
-    if (exercise.prompts.length === currentPromptIdx - 1) {
+    if (currentPromptIdx === exercise.prompts.length) {
       return
     }
 
     const tmId = setTimeout(() => {
-      onNextPrompt()
+      if (currentPromptIdx === exercise.prompts.length - 1) {
+        onComplete()
+      } else {
+        onNextPrompt()
+      }
     }, prompt.lengthInSeconds * MILLISECONDS_PER_SECOND)
 
     return () => clearTimeout(tmId)
-  }, [prompt, onNextPrompt, exercise?.prompts.length, currentPromptIdx])
+  }, [
+    prompt,
+    onNextPrompt,
+    exercise.prompts.length,
+    currentPromptIdx,
+    onComplete,
+  ])
 
   return (
-    <motion.div layout="position">
-      {currentPromptIdx <= 1 ? (
-        <motion.div className="text-sm"> </motion.div>
-      ) : null}
-
-      {currentPromptIdx < 1 ? (
-        <motion.div className="text-md"> </motion.div>
-      ) : null}
-
-      {exercise.prompts.map((p, pIdx) => {
-        return pIdx === currentPromptIdx ? (
-          <WordScroller key={`prompt-${pIdx}`} prompt={p} />
-        ) : null
-        // <PromptDisplay
-        //   key={`prompt-${pIdx}`}
-        //   prompt={p}
-        //   idx={pIdx}
-        //   selectedIdx={currentPromptIdx}
-        // />
-      })}
-    </motion.div>
+    <AnimatePresence mode="wait">
+      <WordScroller
+        key={`prompt-${
+          prompt.lengthInSeconds ? currentPromptIdx : currentPromptIdx - 1
+        }`}
+        prompt={prompt}
+        userData={userData}
+      />
+    </AnimatePresence>
   )
 }
