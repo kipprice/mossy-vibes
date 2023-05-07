@@ -11,11 +11,13 @@ export const loader = ({ params }: any) => {
 
 export const SettingsPage: React.FC<SettingsPageProps> = () => {
   return (
-    <div className="p-4">
+    <>
       <PageHeader title="Your Settings" />
-      <SettingsForm />
+      <div className="w-full">
+        <SettingsForm />
+      </div>
       <LogFooter />
-    </div>
+    </>
   )
 }
 

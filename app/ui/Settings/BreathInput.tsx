@@ -27,52 +27,50 @@ export const BreathInput: React.FC<ReadingSpeedInputProps> = ({}) => {
   )
 
   return (
-    <>
-      <label className="text-xl font-light">
+    <div className="flex flex-col">
+      <label className="text-xl font-light text-center">
         What breathing speed do you prefer?
       </label>
-      <div className="flex flex-row mt-2 gap-2 text-2xl items-center">
-        <div className="flex gap-4">
-          <FormButton
-            onClick={() =>
-              onUpdate({
-                holdBreathInSeconds: 4,
-                inBreathInSeconds: 4,
-                outBreathInSeconds: 4,
-              })
-            }
-            isSelected={localUser?.holdBreathInSeconds === 4}
-          >
-            Shorter (4 • 4 • 4)
-          </FormButton>
+      <div className="flex flex-col lg:flex-row mt-2 gap-2 text-2xl items-center w-full">
+        <FormButton
+          onClick={() =>
+            onUpdate({
+              holdBreathInSeconds: 4,
+              inBreathInSeconds: 4,
+              outBreathInSeconds: 4,
+            })
+          }
+          isSelected={localUser?.holdBreathInSeconds === 4}
+        >
+          Shorter (4 • 4 • 4)
+        </FormButton>
 
-          <FormButton
-            onClick={() =>
-              onUpdate({
-                holdBreathInSeconds: 7,
-                inBreathInSeconds: 4,
-                outBreathInSeconds: 8,
-              })
-            }
-            isSelected={localUser?.holdBreathInSeconds === 7}
-          >
-            Standard (4 • 7 • 8)
-          </FormButton>
+        <FormButton
+          onClick={() =>
+            onUpdate({
+              holdBreathInSeconds: 7,
+              inBreathInSeconds: 4,
+              outBreathInSeconds: 8,
+            })
+          }
+          isSelected={localUser?.holdBreathInSeconds === 7}
+        >
+          Standard (4 • 7 • 8)
+        </FormButton>
 
-          <FormButton
-            onClick={() =>
-              onUpdate({
-                holdBreathInSeconds: 10,
-                inBreathInSeconds: 8,
-                outBreathInSeconds: 12,
-              })
-            }
-            isSelected={localUser?.holdBreathInSeconds === 10}
-          >
-            Longer (8 • 10 • 12)
-          </FormButton>
-        </div>
+        <FormButton
+          onClick={() =>
+            onUpdate({
+              holdBreathInSeconds: 10,
+              inBreathInSeconds: 8,
+              outBreathInSeconds: 12,
+            })
+          }
+          isSelected={localUser?.holdBreathInSeconds === 10}
+        >
+          Longer (8 • 10 • 12)
+        </FormButton>
       </div>
-    </>
+    </div>
   )
 }
