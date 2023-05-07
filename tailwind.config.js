@@ -48,10 +48,22 @@ module.exports = {
         'bold': '700'
       },
       keyframes: {
-        breathe: {
+        'breath-standard': {
           '0%': { transform: 'scale(0.8) rotate(0deg)' },
           '21%': { transform: 'scale(1.4) rotate(120deg)' },
           '58%': { transform: 'scale(1.4) rotate(240deg)' },
+          '100%': { transform: 'scale(0.8) rotate(360deg)' }
+        },
+        'breath-quick': {
+          '0%': { transform: 'scale(0.8) rotate(0deg)' },
+          '33%': { transform: 'scale(1.4) rotate(120deg)' },
+          '66%': { transform: 'scale(1.4) rotate(240deg)' },
+          '100%': { transform: 'scale(0.8) rotate(360deg)' }
+        },
+        'breath-long': {
+          '0%': { transform: 'scale(0.8) rotate(0deg)' },
+          '27%': { transform: 'scale(1.4) rotate(120deg)' },
+          '60%': { transform: 'scale(1.4) rotate(240deg)' },
           '100%': { transform: 'scale(0.8) rotate(360deg)' }
         },
         fade: {
@@ -60,7 +72,9 @@ module.exports = {
         }
       },
       animation: {
-        'breathe': 'breathe 19s linear infinite',
+        'breathe-standard': 'breathe-standard 19s linear infinite',
+        'breath-quick': 'breath-quick 12s linear infinite',
+        'breath-long': 'breath-long 30s linear infinite'
       }
     },
   },

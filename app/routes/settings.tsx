@@ -1,5 +1,7 @@
-import { useLoaderData } from '@remix-run/react'
 import React from 'react'
+import { SettingsForm } from '../ui/Settings/SettingsForm'
+import { LogFooter } from '../ui/shared/LogFooter'
+import { PageHeader } from '../ui/shared/PageHeader'
 
 export type SettingsPageProps = {}
 
@@ -8,17 +10,11 @@ export const loader = ({ params }: any) => {
 }
 
 export const SettingsPage: React.FC<SettingsPageProps> = () => {
-  const {} = useLoaderData()
   return (
     <div className="p-4">
-      <form>
-        <label className="text-sm">What reading speed do you prefer?</label>
-        <div className="flex flex-row mt-2 gap-2 text-lg">
-          <input type="number"></input>
-          <span>words per minute</span>
-        </div>
-        {/* TODO: allow for an automatic test */}
-      </form>
+      <PageHeader title="Your Settings" />
+      <SettingsForm />
+      <LogFooter />
     </div>
   )
 }

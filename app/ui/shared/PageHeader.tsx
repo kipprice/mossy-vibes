@@ -19,6 +19,15 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
           />
         </button>
         <h1 className="w-full text-2xl font-light text-center">{title}</h1>
+        {/* <button
+          onClick={() => navigate(`/settings`)}
+          className="rounded-lg hover:bg-off-white hover:bg-opacity-10 w-9 h-9 flex justify-center items-center"
+        >
+          <Icon
+            iconFileName="gear"
+            className="text-off-white w-8 h-8 rotate-180"
+          />
+        </button> */}
       </div>
     </div>
   )
