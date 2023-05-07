@@ -3,19 +3,9 @@ import path from 'path'
 
 export const exerciseFilenames = ['welcome', 'breathing-practice']
 
-export const exercises: Record<string, string[]> = {}
-
-const seedFiles = () => {
-  for (const k of exerciseFilenames) {
-    exercises[k] = fs
-      .readFileSync(path.join(__dirname, `../../app/models/${k}.md`))
-      .toString()
-      .split(/\n/g)
-  }
-}
-
 export const loadFile = async (filename: string) => {
-  return exercises[filename]
+  const resp = await fetch(`${process.env.HOSTING_URL}/models/${filename}.md`)
+  return (await resp.text()).split(/\n/g)
   // if (filename === 'welcome') {
   //   return welcomeFile.toString().split(/\n/g)
   // }
@@ -30,5 +20,3 @@ export const loadFile = async (filename: string) => {
   // await f.close()
   // return out
 }
-
-seedFiles()
