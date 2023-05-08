@@ -1,6 +1,8 @@
 export const exerciseFilenames = [
   'welcome',
   'breathing-practice',
+  'benefits-of-meditation',
+  'gratitude',
   'what-is-mindfulness',
   'relaxation',
 ]

@@ -19,11 +19,11 @@ export const ReadingSpeedInput: React.FC<ReadingSpeedInputProps> = ({}) => {
 
   const onUpdate = useCallback(
     async (readingSpeedInWpm: number) => {
-      const updatedData = { ...userData, readingSpeedInWpm }
+      const updatedData = { ...localUser, readingSpeedInWpm } as UserData
       setLocalUser(updatedData)
       await setUserData(updatedData)
     },
-    [userData]
+    [localUser]
   )
 
   return (

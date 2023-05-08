@@ -1,6 +1,6 @@
 # Mindfulness
 Today, we'll talking about mindfulness.
-Mindfulness describes he state of being truly present in the moment.
+Mindfulness describes the state of being truly present in the moment.
 Even if you never meditate, you may find yourself being mindful.
 Many people fall into mindfulness when spending time in nature.
 Mindfulness is grounding. It connects your physical being to your mental being.

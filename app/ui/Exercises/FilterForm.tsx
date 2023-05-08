@@ -42,7 +42,7 @@ export const FilterForm: React.FC<FilterFormProps> = ({ setFilterFn }) => {
   }, [exerciseType, minLength, maxLength])
   return (
     <>
-      <div className="flex px-12 pl-20 -mx-8 -mt-3 w-[calc(100%+64px)] flex-row justify-between items-center bg-green-light bg-opacity-20">
+      <div className="flex px-12 pl-20 -mx-8 -mt-3 w-[calc(100%+64px)] flex-row justify-between items-center bg-green-light bg-opacity-10 py-2">
         <button
           className="flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-off-white hover:bg-opacity-10"
           onClick={() => setIsFormVisible(true)}
