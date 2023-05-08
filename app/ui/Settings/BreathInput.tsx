@@ -31,20 +31,20 @@ export const BreathInput: React.FC<ReadingSpeedInputProps> = ({}) => {
       <label className="text-xl font-light text-center">
         What breathing speed do you prefer?
       </label>
-      <FormButton
-        onClick={() =>
-          onUpdate({
-            inBreathInSeconds: 3,
-            holdBreathInSeconds: 2,
-            outBreathInSeconds: 3,
-          })
-        }
-        isSelected={localUser?.holdBreathInSeconds === 10}
-      >
-        Quick (3 • 2 • 3)
-      </FormButton>
 
       <div className="flex flex-col lg:flex-row mt-2 gap-2 text-2xl items-center w-full">
+        <FormButton
+          onClick={() =>
+            onUpdate({
+              inBreathInSeconds: 3,
+              holdBreathInSeconds: 2,
+              outBreathInSeconds: 3,
+            })
+          }
+          isSelected={localUser?.holdBreathInSeconds === 2}
+        >
+          Quick (3 • 2 • 3)
+        </FormButton>
         <FormButton
           onClick={() =>
             onUpdate({
@@ -68,7 +68,7 @@ export const BreathInput: React.FC<ReadingSpeedInputProps> = ({}) => {
           }
           isSelected={localUser?.holdBreathInSeconds === 7}
         >
-          Relaxing (4 • 7 • 8)
+          Relaxed (4 • 7 • 8)
         </FormButton>
       </div>
     </div>

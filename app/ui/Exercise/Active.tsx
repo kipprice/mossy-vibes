@@ -86,17 +86,19 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
               <Button onClick={() => navigate('/exercises')}>
                 Back to Exercises
               </Button>
-              <FormButton
-                onClick={() => {
-                  setIsComplete(false)
-                  setCurrentPromptIdx(0)
-                  setIsBreathAnimationOn(false)
-                  preventSleep()
-                }}
-                isSelected={false}
-              >
-                Restart Exercise
-              </FormButton>
+              <div className="flex justify-center text-xl">
+                <FormButton
+                  onClick={() => {
+                    setIsComplete(false)
+                    setCurrentPromptIdx(0)
+                    setIsBreathAnimationOn(false)
+                    preventSleep()
+                  }}
+                  isSelected={false}
+                >
+                  Restart Exercise
+                </FormButton>
+              </div>
             </motion.div>
           ) : null}
         </AnimatePresence>

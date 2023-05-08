@@ -15,7 +15,9 @@ export const FormButton: React.FC<FormButtonProps> = ({
     <button
       onClick={onClick}
       className={`${buttonClass} ${
-        isSelected ? 'bg-off-white bg-opacity-30' : ''
+        isSelected
+          ? 'bg-off-white bg-opacity-20 opacity-100'
+          : 'opacity-60 hover:opacity-90'
       }`}
     >
       {children}

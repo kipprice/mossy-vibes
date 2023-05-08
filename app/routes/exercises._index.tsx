@@ -69,7 +69,7 @@ export const ExercisesPage: React.FC = () => {
           ) : null}
         </div>
 
-        <div className="col-span-4 w-full mx-4">
+        <div className="col-span-4 w-full">
           <Button onClick={() => navigate('/exercises/*')}>
             Choose for Me
           </Button>
