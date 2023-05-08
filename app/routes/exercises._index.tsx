@@ -6,6 +6,7 @@ import { ExerciseLine } from '../ui/Exercises/ExerciseLine'
 import { FilterForm } from '../ui/Exercises/FilterForm'
 import { PageHeader } from '../ui/shared/PageHeader'
 import { getUserData } from '../utils/client'
+import { allowSleep } from '../utils/client/noSleep'
 import { loadAllExercises } from '../utils/server/loadAllExercises'
 import { getExerciseCount } from '../utils/shared'
 
@@ -33,6 +34,10 @@ export const ExercisesPage: React.FC = () => {
   const [filterFn, setFilterFn] = useState<(v: ExerciseDetails) => boolean>(
     () => () => true
   )
+
+  useEffect(() => {
+    allowSleep()
+  }, [])
 
   useEffect(() => {
     ;(async () => {

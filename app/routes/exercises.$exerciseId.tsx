@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import type { ClientExercise, ParsedExercise } from '../_types'
 import { ExerciseActive, ExerciseStart } from '../ui/Exercise'
 import { getUserData, useAsyncMemo } from '../utils/client'
+import { preventSleep } from '../utils/client/noSleep'
 import { findExercise, selectRandomExercise } from '../utils/server'
 import { getClientExercise } from '../utils/shared'
 
@@ -39,7 +40,10 @@ export const ExercisePage: React.FC<ExercisePageProps> = () => {
     return (
       <ExerciseStart
         exercise={clientExercise}
-        onStart={() => setIsStarted(true)}
+        onStart={() => {
+          setIsStarted(true)
+          preventSleep()
+        }}
       />
     )
   }

@@ -1,7 +1,8 @@
 import { useNavigate } from '@remix-run/react'
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import type { ClientExercise, UserData } from '../../_types'
+import { allowSleep, preventSleep } from '../../utils/client/noSleep'
 import { Button, FormButton } from '../shared'
 import { LogFooter } from '../shared/LogFooter'
 import { PageHeader } from '../shared/PageHeader'
@@ -37,6 +38,12 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
     exercise.prompts,
     isBreathAnimationOn,
   ])
+
+  useEffect(() => {
+    if (isComplete) {
+      allowSleep()
+    }
+  }, [isComplete])
 
   return (
     <div className="w-full h-full flex flex-col justify-center">
@@ -84,6 +91,7 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
                   setIsComplete(false)
                   setCurrentPromptIdx(0)
                   setIsBreathAnimationOn(false)
+                  preventSleep()
                 }}
                 isSelected={false}
               >
