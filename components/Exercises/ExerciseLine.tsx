@@ -59,7 +59,7 @@ export const ExerciseLine: React.FC<ExerciseLineProps> = ({
         ) : (
           <Icon
             iconFileName="star_outline"
-            className="text-orange-light bg-transparent w-8 h-8 hover:fill-[#FFAA5A66] transition-all"
+            className="text-orange-light bg-transparent w-8 h-8 hover:fill-[#FFAA5AAA] transition-all"
           />
         )}
       </button>

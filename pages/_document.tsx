@@ -1,4 +1,5 @@
 import { Head, Html, Main, NextScript } from "next/document";
+import { PwaDetails } from "../components/shared/PwaDetails";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,7 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <Html lang="en" className="w-full h-full m-0 p-0">
-      <Head />
+      <Head>
+<PwaDetails />
+
+        </Head>
       <body className={`m-0 p-0 h-full w-full`}>
         <div className={`m-0 p-0 h-full w-full`}>
           <div className="left-0 top-0 fixed -z-10 w-full h-full bg-paper opacity-40" />
