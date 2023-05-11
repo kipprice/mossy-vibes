@@ -1,5 +1,5 @@
-import type { ClientExercise, ParsedExercise, UserData } from '~/_types'
 import { getPromptCount } from '../shared/getCounts'
+import { ClientExercise, ParsedExercise, UserData } from '../types'
 
 export const getClientExercise = (
   exercise: ParsedExercise,

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React, { useEffect, useMemo, useState } from 'react'
-import type { ExerciseDetails } from '../../_types'
 import { FormButton, Icon } from '../shared'
+import { ExerciseDetails } from '../../utils/types'
 
 export type FilterFormProps = {
   setFilterFn: React.Dispatch<

@@ -43,7 +43,7 @@ export const PwaDetails: React.FC<PwaDetailsProps> = ({}) => {
       />
       <meta
         property="og:image"
-        content={`${details.full_url}${getIconPath(512)}`}
+        content={`${details.full_url}${getIconPath(192)}`}
       />
 
       {/* static info */}
