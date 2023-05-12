@@ -65,6 +65,22 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
           >
             Settings
           </button>
+          <div className='h-12' />
+          <button className={sidebarButtonClass} onClick={() => navigate('/about')}>
+            About Mossy Vibes
+          </button>
+          <div className='flex-grow' />
+          <div className='w-full flex flex-col gap-1'>
+          <div className='text-center'>Want to help us keep Mossy Vibes going strong?</div>
+          {/* <div className=''
+          <a className={`${sidebarButtonClass} bg-green-light text-center text-off-black shadow-lg`} href='https://buymeacoffee.com/mossyvibes'>
+            Share
+          </a> */}
+          <a className={`${sidebarButtonClass} bg-green-light text-center text-off-black shadow-lg`} href='https://buymeacoffee.com/mossyvibes'>
+            Donate or Subscribe
+          </a>
+          </div>
+          <div className='h-12' />
         </motion.div>
       </motion.div>
     </div>
