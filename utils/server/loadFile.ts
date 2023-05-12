@@ -6,9 +6,10 @@ export const exerciseFilenames = [
   'breathing-practice',
   'benefits-of-meditation',
   'gratitude',
+  'taking-a-moment',
+  'waking-up',
   'what-is-mindfulness',
   'relaxation',
-  'taking-a-moment',
 ]
 
 export const loadFile = async (filename: string) => {
