@@ -33,3 +33,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+public/img/green-mushroom-cluster.png
+public/img/logo-dark.png
+public/img/mushroom-cluster.png
+public/img/panel-2.png
+public/img/panel.png
+public/img/round-mushroom.png
+public/sw.js*
+public/workbox-*
