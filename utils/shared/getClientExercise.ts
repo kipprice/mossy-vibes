@@ -9,6 +9,8 @@ export const getClientExercise = (
     id: exercise.id,
     title: exercise.title,
     prompts: [],
+    tags: [],
+    author: ''
   }
 
   let breathIdx = -1
