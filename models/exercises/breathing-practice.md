@@ -14,3 +14,6 @@ Last one
 Great job! You've started building up your powers of focus
 Just one mindful breath a day can make focusing easier.
 Enjoy your focus today!
+
+[_meta:author]:- "Kip"
+[_meta:tags]:- "breathing"

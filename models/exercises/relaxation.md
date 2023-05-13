@@ -51,4 +51,6 @@ With that, we draw this exercise to a close
 If you don't feel fully relaxed yet, feel free to continue focusing on your body
 /
 And when you're ready, enjoy your relaxation
-/
+
+[_meta:author]:- "Kip"
+[_meta:tags]:- "relaxation"

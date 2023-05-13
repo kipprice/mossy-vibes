@@ -8,6 +8,23 @@ export const parseExerciseLine = (ln: string, exercise: ParsedExercise) => {
     return exercise
   }
 
+  // parse out meta
+  if (ln[0] === '[') {
+    const match = /\[_meta:(.*?)\]:-\s*"(.*?)"/.exec(ln);
+    if (match) {
+      const [_, key, val] = match
+      switch (key) {
+        case 'author':
+          exercise.author = val;
+          break;
+        case 'tags':
+          exercise.tags = exercise.tags.concat(val.split(','))
+          break
+      }
+    }
+    return exercise
+  }
+
   if (trim(ln) === '') {
     exercise.prompts.push({ content: '', toggleBreathAnimation: true })
     return exercise

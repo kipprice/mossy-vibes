@@ -33,3 +33,6 @@ Which in turn can lead to stronger relationships and less chronic stress
 This practice grows stronger more quickly when you apply it as you experience real annoyances
 Just as we did in the exercise, it's easier to start with small triggers and build up to large ones
 Thank you for taking a moment with us today.
+
+[_meta:author]:- "Kip"
+[_meta:tags]:- "control"

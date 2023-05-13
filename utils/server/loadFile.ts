@@ -18,7 +18,7 @@ export const loadFile = async (filename: string) => {
 }
 
 export const openFile = async (filename: string, ) => {
-  const f = await fs.open(path.join(`models/${filename}.md`))
+  const f = await fs.open(path.join(`models/exercises/${filename}.md`))
   const lines: string[] = [];
   for await (const ln of f.readLines()) {
     lines.push(ln)

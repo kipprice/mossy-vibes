@@ -27,3 +27,6 @@ Last one... / / ...and out
 
 That's all for today.
 We hope you have a wonderful, mindful day!
+
+[_meta:author]:- "Kip"
+[_meta:tags]:- "morning,calm"

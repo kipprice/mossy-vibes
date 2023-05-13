@@ -35,3 +35,6 @@ Even a single meditative breath can help you de-stress.
 It can be difficult at first to get started
 but it is worth the effort. 
 We're glad to see you on this path with us!
+
+[_meta:author]:- "Kip"
+[_meta:tags]:- "knowledge"

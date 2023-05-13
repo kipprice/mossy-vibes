@@ -7,11 +7,11 @@ import { ExerciseLine } from './ExerciseLine';
 import { ExerciseDetails } from '../../utils/types';
 import { allowSleep, useNavigate } from '../../utils/client';
 
-export type ExercisesProps = {
+export type ExercisesPageProps = {
   exerciseDetails: ExerciseDetails[];  
 };
 
-export const Exercises: React.FC<ExercisesProps> = ({ exerciseDetails }) => {
+export const ExercisesPage: React.FC<ExercisesPageProps> = ({ exerciseDetails }) => {
     const [filterFn, setFilterFn] = useState<(v: ExerciseDetails) => boolean>(
         () => () => true
       )

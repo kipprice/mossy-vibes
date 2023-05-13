@@ -31,3 +31,6 @@ With that, our exercise draws to a close.
 Meditating on gratitude can help rekindle the parts of your life that bring you joy. 
 You may find new aspects to be grateful for each time you revisit this exercise.
 We hope you've found some joy through this meditation.
+
+[_meta:author]:- "Kip"
+[_meta:tags]:- "gratitude"

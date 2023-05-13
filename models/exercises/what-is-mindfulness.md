@@ -45,3 +45,6 @@ Like anything else, mindfulness comes easier with practice.
 Try to set aside a few minutes each day to go through a meditation exercise.
 Even just a single mindful breath can help improve your ability to be present in the moment.
 Enjoy your mindfulness!
+
+[_meta:author]:- "Kip"
+[_meta:tags]:- "knowledge,mindfulness"

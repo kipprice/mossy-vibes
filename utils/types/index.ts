@@ -32,6 +32,8 @@ export type ParsedExercise = {
   id: string
   title: string
   prompts: ParsedPrompt[]
+  author: string;
+  tags: string[];
 }
 
 export type ParsedPrompt = {
