@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import React, { useState } from 'react'
 import { Icon } from './Icon'
 import { useNavigate } from '../../utils/client'
+import { Sidebar } from './Sidebar'
 export type PageHeaderProps = { title: string }
 
 export const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
@@ -35,60 +36,9 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
         </button>
       </div>
 
-      <motion.div
-        className="w-full h-full fixed left-0 top-0 bg-off-black bg-opacity-50 z-30"
-        initial={{ opacity: 0, pointerEvents: 'none' }}
-        animate={{
-          opacity: isSidebarVisible ? 1 : 0,
-          pointerEvents: isSidebarVisible ? 'auto' : 'none',
-        }}
-        onClick={() => setIsSidebarVisible(false)}
-      >
-        <motion.div
-          className="w-4/5 h-full absolute bg-green-dark p-4 flex flex-col gap-8"
-          initial={{ left: '100%' }}
-          animate={{ left: isSidebarVisible ? '20%' : '100%' }}
-        >
-          <button className={sidebarButtonClass} onClick={() => navigate('/')}>
-            Home
-          </button>
-
-          <button
-            className={sidebarButtonClass}
-            onClick={() => navigate('/exercises')}
-          >
-            Exercises
-          </button>
-
-          <button
-            className={sidebarButtonClass}
-            onClick={() => navigate('/settings')}
-          >
-            Settings
-          </button>
-          <div className='h-12' />
-          <button className={sidebarButtonClass} onClick={() => navigate('/about')}>
-            About Mossy Vibes
-          </button>
-          <div className='flex-grow' />
-          <div className='w-full flex flex-col gap-1'>
-          <div className='text-center'>Want to help us keep Mossy Vibes going strong?</div>
-          {/* <div className=''
-          <a className={`${sidebarButtonClass} bg-green-light text-center text-off-black shadow-lg`} href='https://buymeacoffee.com/mossyvibes'>
-            Share
-          </a> */}
-          <a className={`${sidebarButtonClass} bg-green-light text-center text-off-black shadow-lg`} href='https://buymeacoffee.com/mossyvibes'>
-            Donate or Subscribe
-          </a>
-          </div>
-          <div className='h-12' />
-        </motion.div>
-      </motion.div>
+      <Sidebar isSidebarVisible={isSidebarVisible} setIsSidebarVisible={setIsSidebarVisible}/>
     </div>
     <div className='h-[68px] flex-shrink-0' />
     </>
   )
 }
-
-const sidebarButtonClass =
-  'hover:bg-off-white hover:bg-opacity-30 w-full px-4 py-2 text-2xl transition-all rounded-lg'
