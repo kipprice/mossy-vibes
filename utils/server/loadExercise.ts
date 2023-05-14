@@ -19,7 +19,5 @@ export const loadExercise = async (filename: string) => {
 
   clearTrailingLines(exercise)
 
-  console.log(exercise)
-
   return exercise
 }
