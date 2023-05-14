@@ -191,7 +191,7 @@ export const FilterForm: React.FC<FilterFormProps> = ({
               <label className="text-lg text-center">Authors</label>
               <div className="flex flex-col lg:flex-row gap-4 text-2xl lg:flex-wrap">
               <FormButton onClick={() => setAuthor('')} isSelected={!author}>
-                  All authors
+                  All Authors
                 </FormButton>
                 {[...authors].map((a) => (
                   <FormButton
@@ -208,7 +208,7 @@ export const FilterForm: React.FC<FilterFormProps> = ({
               <label className="text-lg text-center">Tags</label>
               <div className="flex flex-col lg:flex-row gap-4 text-2xl lg:flex-wrap">
                 <FormButton onClick={() => setTag('')} isSelected={!tag}>
-                  All tags
+                  All Tags
                 </FormButton>
                 {[...tags].map((t) => (
                   <FormButton
