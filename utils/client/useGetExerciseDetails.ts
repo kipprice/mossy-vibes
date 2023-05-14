@@ -24,6 +24,8 @@ const getExerciseDetails = (exercise: ParsedExercise, userData: UserData) => {
         id: exercise.id,
         title: exercise.title,
         prompts: exercise.prompts,
+        author: exercise.author,
+        tags: exercise.tags,
         hasCompleted: userData.completedExercises.indexOf(exercise.id) !== -1,
         isFavorite: userData.favoriteExercises.indexOf(exercise.id) !== -1,
         lengthInSeconds: getExerciseCount(exercise, userData),

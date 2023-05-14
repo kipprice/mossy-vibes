@@ -11,7 +11,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
 
   const navigate = useNavigate()
   return (
-    <div className="bg-green-dark bg-opacity-60  p-4 absolute left-0 top-0 w-full flex justify-center">
+    <>
+    <div className="bg-off-black bg-opacity-10  p-4 absolute left-0 top-0 w-full flex justify-center">
       <div className="grid grid-cols-[2rem_1fr_2rem] justify-center w-full max-w-3xl px-4">
         <button
           onClick={() => navigate(-1)}
@@ -84,6 +85,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
         </motion.div>
       </motion.div>
     </div>
+    <div className='h-[68px] flex-shrink-0' />
+    </>
   )
 }
 

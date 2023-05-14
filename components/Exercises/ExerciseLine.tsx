@@ -46,7 +46,7 @@ export const ExerciseLine: React.FC<ExerciseLineProps> = ({
   const lengthInMinutes = Math.ceil(exerciseDetails.lengthInSeconds / 60)
 
   return (
-    <div className="text-left flex flex-row w-full gap-4 ">
+    <div className="text-left flex flex-row w-full gap-4">
       <button
         onClick={onChangeFavorite}
         className="w-9 flex justify-center items-center"
@@ -68,16 +68,26 @@ export const ExerciseLine: React.FC<ExerciseLineProps> = ({
         onClick={() => navigate(`/exercises/${exerciseDetails.id}`)}
       >
         <div className={'flex flex-col md:flex-row gap-1 md:gap-4 flex-grow'}>
+          <div className='flex gap-2 justify-start flex-grow items-center'>
           <div
             className={`${
               exerciseDetails.hasCompleted ? 'opacity-50' : 'opacity-100'
-            } text-xl flex-grow`}
+            } text-xl`}
           >
             {exerciseDetails.title}
           </div>
-          <div className="font-light text-lg">
+          {exerciseDetails.author ?
+          <div className='flex gap-1 text-sm opacity-70'>
+            <div className='font-base'>
+              by {exerciseDetails.author}
+            </div>
+          </div> : null}
+          </div>
+          <div className="font-light text-lg ">
             {lengthInMinutes} minute{lengthInMinutes === 1 ? '' : 's'}
           </div>
+
+
         </div>
         <div className="w-9">
           <Icon

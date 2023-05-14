@@ -25,7 +25,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({}) => {
   }, [localUser])
 
   return (
-    <form className="pt-20 w-full" onSubmit={(e) => e.preventDefault()}>
+    <form className="p-4 w-full" onSubmit={(e) => e.preventDefault()}>
       <ReadingSpeedInput localUser={localUser} setLocalUser={onSetLocalUser} />
       <div className="mt-8" />
       <BreathInput localUser={localUser} setLocalUser={onSetLocalUser}/>

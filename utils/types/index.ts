@@ -4,13 +4,10 @@ export type Exercise = {
   prompts: Prompt[]
 }
 
-export type ExerciseDetails = {
-  id: string
-  title: string
+export type ExerciseDetails = ParsedExercise & {
   lengthInSeconds: number
   isFavorite: boolean
   hasCompleted: boolean
-  prompts: Prompt[]
 }
 
 export type Prompt = {

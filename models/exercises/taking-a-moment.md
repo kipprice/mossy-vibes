@@ -35,4 +35,4 @@ Just as we did in the exercise, it's easier to start with small triggers and bui
 Thank you for taking a moment with us today.
 
 [_meta:author]:- "Kip"
-[_meta:tags]:- "control"
+[_meta:tags]:- "mindfulness"

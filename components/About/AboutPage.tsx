@@ -9,7 +9,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({  }) => {
     return(
         <>
         <PageHeader title={'About'} />
-        <div className='flex flex-col gap-8 text-xl font-light p-4 pt-20'>
+        <div className='flex flex-col gap-8 text-xl font-light py-4 px-6'>
         <p>Welcome to Mossy Vibes!</p>
         <p>We created Mossy Vibes as a way to make it easier to find meditative and mindful moments, no matter where you are mentally or physically. The exercises are short, and designed to be read rather than listened to; and every day, we try to add a new one!</p>
         <p>We don&apos;t track any of your data, but we do store your preferences directly on your device. This information is only visible to you.</p>

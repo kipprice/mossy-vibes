@@ -16,4 +16,4 @@ Just one mindful breath a day can make focusing easier.
 Enjoy your focus today!
 
 [_meta:author]:- "Kip"
-[_meta:tags]:- "breathing"
+[_meta:tags]:- "beginnings"

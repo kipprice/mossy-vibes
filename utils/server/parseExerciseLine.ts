@@ -18,7 +18,7 @@ export const parseExerciseLine = (ln: string, exercise: ParsedExercise) => {
           exercise.author = val;
           break;
         case 'tags':
-          exercise.tags = exercise.tags.concat(val.split(','))
+          exercise.tags = exercise.tags.concat(val.split(',').map((pc) => trim(pc)))
           break
       }
     }
