@@ -1,16 +1,16 @@
 export const splitWords = (text: string) => {
-  const words = text.split(/\s+/g)
-  const out: string[] = []
+  const words = text.split(/\s+/g);
+  const out: string[] = [];
 
   words.forEach((w, wIdx) => {
-    out.push(w)
+    out.push(w);
     if (wIdx === words.length - 1) {
-      return
+      return;
     }
-    if (/[.;!?]$/.exec(w)!!) {
-      out.push('¶')
+    if (/[.;:!?]$/.exec(w)!!) {
+      out.push("¶");
     }
-  })
+  });
 
-  return out
-}
+  return out;
+};
