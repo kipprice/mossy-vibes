@@ -1,20 +1,20 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import React, { useCallback, useEffect, useState } from 'react'
-import { allowSleep, preventSleep } from '../../utils/client/noSleep'
-import { Button, FormButton } from '../shared'
-import { LogFooter } from '../shared/LogFooter'
-import { PageHeader } from '../shared/PageHeader'
-import { BreathAnimation } from './elements/BreathAnimation'
-import { PromptScroller } from './elements/PromptScroller'
-import { useNavigate } from '../../utils/client'
-import { ClientExercise, UserData } from '../../utils/types'
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useCallback, useEffect, useState } from "react";
+import { allowSleep, preventSleep } from "../../utils/client/noSleep";
+import { Button, FormButton } from "../shared";
+import { LogFooter } from "../shared/LogFooter";
+import { PageHeader } from "../shared/PageHeader";
+import { BreathAnimation } from "./elements/BreathAnimation";
+import { PromptScroller } from "./elements/PromptScroller";
+import { useNavigate } from "../../utils/client";
+import { ClientExercise, UserData } from "../../utils/types";
 
 export type ExerciseActiveProps = {
-  exercise: ClientExercise
-  currentPromptIdx: number
-  setCurrentPromptIdx: React.Dispatch<React.SetStateAction<number>>
-  userData: UserData
-}
+  exercise: ClientExercise;
+  currentPromptIdx: number;
+  setCurrentPromptIdx: React.Dispatch<React.SetStateAction<number>>;
+  userData: UserData;
+};
 
 export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
   exercise,
@@ -22,28 +22,26 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
   setCurrentPromptIdx,
   userData,
 }) => {
-  const [isBreathAnimationOn, setIsBreathAnimationOn] = useState(false)
-  const [isComplete, setIsComplete] = useState(false)
+  const [isBreathAnimationOn, setIsBreathAnimationOn] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onNext = useCallback(() => {
-    setCurrentPromptIdx(currentPromptIdx + 1)
-    if (exercise.prompts[currentPromptIdx + 1]?.lengthInSeconds === 0) {
-      setIsBreathAnimationOn(!isBreathAnimationOn)
-    }
-  }, [
-    setCurrentPromptIdx,
-    currentPromptIdx,
-    exercise.prompts,
-    isBreathAnimationOn,
-  ])
+    setCurrentPromptIdx(currentPromptIdx + 1);
+  }, [setCurrentPromptIdx, currentPromptIdx]);
 
   useEffect(() => {
     if (isComplete) {
-      allowSleep()
+      allowSleep();
     }
-  }, [isComplete])
+  }, [isComplete]);
+
+  useEffect(() => {
+    if (exercise.prompts[currentPromptIdx]?.lengthInSeconds === 0) {
+      setIsBreathAnimationOn((anim) => !anim);
+    }
+  }, [currentPromptIdx, exercise]);
 
   return (
     <div className="w-full h-full flex flex-col justify-center">
@@ -83,16 +81,16 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
               transition={{ duration: 0.5 }}
               exit={{ opacity: 0 }}
             >
-              <Button onClick={() => navigate('/exercises')}>
+              <Button onClick={() => navigate("/exercises")}>
                 Back to Exercises
               </Button>
               <div className="flex justify-center text-xl">
                 <FormButton
                   onClick={() => {
-                    setIsComplete(false)
-                    setCurrentPromptIdx(0)
-                    setIsBreathAnimationOn(false)
-                    preventSleep()
+                    setIsComplete(false);
+                    setCurrentPromptIdx(0);
+                    setIsBreathAnimationOn(false);
+                    preventSleep();
                   }}
                   isSelected={false}
                 >
@@ -106,5 +104,5 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
       <div className="h-1/3" />
       <LogFooter />
     </div>
-  )
-}
+  );
+};
