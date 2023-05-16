@@ -46,7 +46,7 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
   return (
     <div className="w-full h-full flex flex-col justify-center">
       <PageHeader title={exercise.title} />
-      <div className="h-1/3  flex flex-col justify-end">
+      <div className="h-1/3 flex flex-col justify-end">
         <PromptScroller
           userData={userData}
           exercise={exercise}
@@ -56,7 +56,7 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
         />
       </div>
 
-      <div className="h-1/3  flex flex-col justify-start">
+      <div className="h-1/2 flex flex-col justify-start">
         <AnimatePresence>
           {isBreathAnimationOn ? (
             <motion.div
@@ -101,7 +101,7 @@ export const ExerciseActive: React.FC<ExerciseActiveProps> = ({
           ) : null}
         </AnimatePresence>
       </div>
-      <div className="h-1/3" />
+      <div className="h-1/6" />
       <LogFooter />
     </div>
   );
