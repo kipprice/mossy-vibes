@@ -1,5 +1,5 @@
-import { getPromptCount } from '../shared/getCounts'
-import { ClientExercise, ParsedExercise, UserData } from '../types'
+import { getExerciseCount, getPromptCount } from "../shared/getCounts";
+import { ClientExercise, ParsedExercise, UserData } from "../types";
 
 export const getClientExercise = (
   exercise: ParsedExercise,
@@ -9,23 +9,24 @@ export const getClientExercise = (
     id: exercise.id,
     title: exercise.title,
     prompts: [],
-    tags: [],
-    author: ''
-  }
+    tags: exercise.tags,
+    author: exercise.author,
+    lengthInMinutes: Math.ceil(getExerciseCount(exercise, userData) / 60),
+  };
 
-  let breathIdx = -1
+  let breathIdx = -1;
   for (const p of exercise.prompts) {
     const { lengthInSeconds, nextBreathIdx } = getPromptCount(
       p,
       breathIdx,
       userData
-    )
-    breathIdx = nextBreathIdx
+    );
+    breathIdx = nextBreathIdx;
     out.prompts.push({
       content: p.content,
       lengthInSeconds,
-    })
+    });
   }
 
-  return out
-}
+  return out;
+};
