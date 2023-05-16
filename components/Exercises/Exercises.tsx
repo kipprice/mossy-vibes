@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { Button, PageHeader } from "../shared";
-import { FilterForm } from "./FilterForm";
 import { ExerciseLine } from "./ExerciseLine";
 import { ExerciseDetails } from "../../utils/types";
 import { allowSleep, useNavigate } from "../../utils/client";
+import { Filters } from "./Filters";
 
 export type ExercisesPageProps = {
   exerciseDetails: ExerciseDetails[];
@@ -17,6 +17,7 @@ export const ExercisesPage: React.FC<ExercisesPageProps> = ({
   const [filterFn, setFilterFn] = useState<(v: ExerciseDetails) => boolean>(
     () => () => true
   );
+
   useEffect(() => {
     allowSleep();
   }, []);
@@ -24,12 +25,13 @@ export const ExercisesPage: React.FC<ExercisesPageProps> = ({
   const navigate = useNavigate();
 
   const filteredExercises = exerciseDetails.filter(filterFn);
+
   return (
     <>
       <PageHeader title="All Exercises" />
-      <div className="flex flex-col overflow-auto">
-        <FilterForm setFilterFn={setFilterFn} exercises={exerciseDetails} />
-        <div className="flex flex-col gap-4 overflow-y-auto px-6">
+      <div className="flex flex-col overflow-auto flex-grow">
+        <Filters setFilterFn={setFilterFn} exercises={exerciseDetails} />
+        <div className="flex flex-col gap-4 overflow-y-auto px-6 flex-grow">
           {filteredExercises.map((ex) => (
             <ExerciseLine key={`exercise-${ex.id}`} exerciseDetails={ex} />
           ))}
