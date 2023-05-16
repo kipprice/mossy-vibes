@@ -41,11 +41,12 @@ export const FilterForm: React.FC<FilterFormProps> = ({
         <LengthFilter
           minLength={filterDetails.minLength}
           maxLength={filterDetails.maxLength}
-          setMaxLength={(maxLength) =>
-            setFilterDetails({ ...filterDetails, maxLength })
-          }
-          setMinLength={(minLength) =>
-            setFilterDetails({ ...filterDetails, minLength })
+          setLength={({ min, max }) =>
+            setFilterDetails({
+              ...filterDetails,
+              maxLength: max,
+              minLength: min,
+            })
           }
         />
         <AuthorFilter
