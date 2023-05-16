@@ -81,6 +81,7 @@ module.exports = {
         'breath-long': 'breath-long 30s linear infinite'
       },
       flexGrow: {
+        1: '1',
         2: '2'
       }
     },
