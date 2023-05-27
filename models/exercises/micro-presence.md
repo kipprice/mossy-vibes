@@ -10,3 +10,4 @@ Use this practice to stay present throughout your day
 
 [_meta:author]:- "Kip"
 [_meta:tags]:- "micro,mindfulness,presence"
+[_meta:size]:- "micro"
