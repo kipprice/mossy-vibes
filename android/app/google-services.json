@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "466747772062",
+    "project_id": "mossy-vibes",
+    "storage_bucket": "mossy-vibes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466747772062:android:8eaddb4655363d64f2ff8f",
+        "android_client_info": {
+          "package_name": "com.example.mossy_vibes_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466747772062-eu3h2evevpp7bdjld61p7bhnnaoo87cr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhYYXlV38CddVf2TyvGDg5NU-BfudXtzQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466747772062-eu3h2evevpp7bdjld61p7bhnnaoo87cr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

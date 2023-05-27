@@ -1,14 +1,16 @@
 # Mossy Vibes
 
-A text-based tool for practicing meditation; new exercises every day!
+A new Flutter project.
 
+## Getting Started
 
-## Running Locally
+This project is a starting point for a Flutter application.
 
-This application is a PWA powered by [Next.js](https://nextjs.org/). To get it started, first, run the development server:
+A few resources to get you started if this is your first Flutter project:
 
-```bash
-npm run dev
-```
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
