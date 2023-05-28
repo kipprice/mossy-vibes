@@ -1,15 +1,21 @@
 import 'package:flutter/widgets.dart';
-import 'package:mossy_vibes/main.dart';
 import 'package:mossy_vibes/src/models/exercise.dart';
 import 'package:mossy_vibes/src/utils/theme.dart';
 import 'package:mossy_vibes/src/widgets/atoms/cta_button.dart';
 import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../_state.dart';
+
 class StartExercise extends StatelessWidget {
   final Exercise exercise;
   final void Function() onStart;
 
+  /// Renders the exercise details and "Start Exercise" button to the user.
+  ///
+  /// The StartExercise screen only ever appears when the user is coming from
+  /// the ExercisesScreen; when restarting an exercise, the exercise is
+  /// immediately re-rendered on the starting prompt.
   StartExercise({required this.exercise, required this.onStart});
 
   @override

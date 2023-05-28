@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/widgets.dart';
@@ -10,8 +9,19 @@ import 'package:mossy_vibes/src/widgets/atoms/animate_fade.dart';
 class BreathAnimation extends StatefulWidget {
   final UserPreferences preferences;
   final bool isVisible;
+  final bool isPaused;
 
-  BreathAnimation({required this.preferences, this.isVisible = true});
+  /// Renders a simple breath in - hold - out animation to the user.
+  ///
+  /// The BreathAnimation manages its own animation state, including
+  /// fading in and out when appropriate.
+  ///
+  /// TODO: support pausing
+  /// TODO: support going backwards
+  BreathAnimation(
+      {required this.preferences,
+      this.isVisible = true,
+      this.isPaused = false});
 
   @override
   State<BreathAnimation> createState() => _BreathAnimationState();
@@ -91,6 +101,8 @@ class _BreathAnimationState extends State<BreathAnimation>
     if (!widget.isVisible) {
       breathController?.stop();
       breathController?.reset();
+    } else if (widget.isPaused) {
+      breathController?.stop();
     } else {
       breathController?.repeat();
     }

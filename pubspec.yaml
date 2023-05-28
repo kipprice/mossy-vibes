@@ -48,8 +48,14 @@ dependencies:
   connectivity_plus: ^4.0.1
   dotenv: ^4.1.0
   http: ^1.0.0
+  flutter_dotenv: ^5.0.2
+  sentry_flutter: ^7.6.2
+
+dependency_overrides:
+  http: ^1.0.0
 
 dev_dependencies:
+  test: ^1.24.1
   flutter_test:
     sdk: flutter
 
@@ -59,8 +65,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  json_serializable: ^6.7.0
-  json_annotation: ^4.8.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -80,6 +84,7 @@ flutter:
     - assets/exercises/
     - assets/svg/
     - assets/img/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

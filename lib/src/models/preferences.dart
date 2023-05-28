@@ -2,40 +2,8 @@
 import 'package:mossy_vibes/src/models/prompt.dart';
 
 import '../utils/constants.dart';
-
-enum BreathPattern {
-  quick(intake: 3, hold: 2, out: 3),
-  calm(intake: 4, hold: 4, out: 4),
-  relaxed(intake: 4, hold: 7, out: 8);
-
-  const BreathPattern(
-      {required this.intake, required this.hold, required this.out});
-
-  final int intake;
-  final int hold;
-  final int out;
-  final int padding = 1;
-}
-
-class CompletionAudit {
-  final String exerciseId;
-  final DateTime completedAt;
-
-  const CompletionAudit({required this.exerciseId, required this.completedAt});
-
-  factory CompletionAudit.fromJson(Map<String, dynamic> json) {
-    return CompletionAudit(
-        exerciseId: json['exerciseId'],
-        completedAt: DateTime.parse(json['completedAt']));
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'exerciseId': exerciseId,
-      'completedAt': completedAt.toIso8601String()
-    };
-  }
-}
+import 'breath_pattern.dart';
+import 'completion_audit.dart';
 
 class UserPreferences {
   /// How quickly the user wants to see words light up.
@@ -51,19 +19,33 @@ class UserPreferences {
   /// of completion audit entries
   List<CompletionAudit> completedExercises = [];
 
+  /// Creates a set of preferences that will be tied to this specific device.
+  ///
+  /// By design, preferences are only stored locally. This allows us to not
+  /// require a login step, and will for most users be totally fine. If a user
+  /// is working across two different devices, we may end up needing to create
+  /// a syncing mechanism -- maybe a unique code with the preferences encoded,
+  /// or a unique code per device that can be linked together
   UserPreferences(
       {this.breathPattern = BreathPattern.calm,
       this.completedExercises = const [],
       this.readingSpeedInWpm = 150,
       this.favorites = const []});
 
-  /// Instead of storing these separately, the breath pattern keeps track of
-  /// the different types of breaths & their length
+  /// How long the "in" part of the user's breath pattern is
   int get inBreathInSeconds => breathPattern.intake;
+
+  /// How long the "hold" part of the user's breath pattern is
   int get holdBreathInSeconds => breathPattern.hold;
+
+  /// How long the "out" part of the user's breath pattern is
   int get outBreathInSeconds => breathPattern.out;
+
+  /// How long the user's breath pattern waits between breaths
   int get paddingInSeconds => breathPattern.padding;
 
+  /// Determines how long a single breath (in-hold-out-padding) takes, given the
+  /// user's current breath pattern
   int calculateFullBreathInSeconds() {
     return inBreathInSeconds +
         outBreathInSeconds +
@@ -71,6 +53,11 @@ class UserPreferences {
         paddingInSeconds;
   }
 
+  /// Determines how long proportionally a particular part of a breath cycle
+  /// takes.
+  ///
+  /// This is used by the BreathAnimation to ensure the timing of each phase
+  /// lines up with the actual breath counts.
   double calculateBreathRatio(BreathType type) {
     switch (type) {
       case BreathType.intake:
@@ -84,16 +71,26 @@ class UserPreferences {
     }
   }
 
+  /// Determines how long proportionally the space between breaths takes.
+  ///
+  /// This is used by the BreathAnimation to ensure the timing of each phase
+  /// lines up with the actual breath counts.
   double calculatePaddingRatio() {
     return paddingInSeconds / calculateFullBreathInSeconds();
   }
 
+  /// Determines how many seconds a single word takes, given the user's current
+  /// reading speed.
   double calculateSecondsPerWord() {
     return 1.0 / (readingSpeedInWpm / secondsPerMinute);
   }
 
+  /// Parses a JSON representation of preferences and adds them to the current
+  /// model.
+  ///
+  /// This does not require any data from the JSON model to actually be set, as
+  /// all defaults on UserPreferences will still be represented.
   void parseJson(Map<String, dynamic> json) {
-    print('json: $json');
     if (json['readingSpeedInWpm'] != null) {
       readingSpeedInWpm = json['readingSpeedInWpm'];
     }
@@ -113,6 +110,11 @@ class UserPreferences {
     }
   }
 
+  /// Translates this model into a JSON representation.
+  ///
+  /// We use `toJson` to serialize the user's preferences in order to store
+  /// them locally. We never work with the JSON representation directly, except
+  /// to translate it back into the model.
   Map<String, dynamic> toJson() {
     return {
       'readingSpeedInWpm': readingSpeedInWpm,

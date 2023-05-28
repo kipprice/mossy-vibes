@@ -14,7 +14,7 @@ class ShareSection extends StatelessWidget {
       children: [
         MText(
           title,
-          fontSize: MossyTheme.fontLg,
+          fontSize: MossyFontSize.lg,
           fontWeight: MFontWeight.base,
           underline: true,
         ),

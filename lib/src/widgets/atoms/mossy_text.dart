@@ -15,8 +15,8 @@ class MText extends StatelessWidget {
 
   MText(this.content,
       {super.key,
-      this.color = MossyTheme.offWhite,
-      this.fontSize = MossyTheme.fontMd,
+      this.color = MossyColors.offWhite,
+      this.fontSize = MossyFontSize.md,
       this.fontWeight = MFontWeight.light,
       this.opacity = 1,
       this.underline = false});

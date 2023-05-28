@@ -6,7 +6,7 @@ import 'package:mossy_vibes/src/widgets/atoms/animate_fade.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercise/active_exercise/word_scroller.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../main.dart';
+import '../../../../../_state.dart';
 import '../../../../models/exercise.dart';
 import '../../../../models/prompt.dart';
 
@@ -31,7 +31,7 @@ class _PromptScrollerState extends State<PromptScroller> {
   @override
   Widget build(BuildContext context) {
     MossyVibesState appState = context.watch<MossyVibesState>();
-    Prompt prompt = widget.exercise.prompts![widget.currentPromptIdx];
+    Prompt prompt = widget.exercise.prompts[widget.currentPromptIdx];
 
     int promptLength = prompt.getLengthInSeconds(appState.preferences);
 
@@ -44,7 +44,7 @@ class _PromptScrollerState extends State<PromptScroller> {
     return Padding(
       padding: const EdgeInsets.all(MossyPadding.md),
       child: Stack(alignment: Alignment.center, children: [
-        for (var pIdx = 0; pIdx < widget.exercise.prompts!.length; pIdx += 1)
+        for (var pIdx = 0; pIdx < widget.exercise.prompts.length; pIdx += 1)
           AnimateFadeAndRemove(
             isVisible: pIdx == widget.currentPromptIdx,
             child: WordScroller(

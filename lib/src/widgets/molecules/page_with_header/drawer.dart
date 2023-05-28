@@ -12,9 +12,9 @@ class MossyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Padding(
-      padding: EdgeInsets.all(MossyTheme.paddingLg),
+      padding: EdgeInsets.all(MossyPadding.lg),
       child: Column(children: [
-        SizedBox(height: MossyTheme.paddingLg),
+        SizedBox(height: MossyPadding.lg),
         Row(
           children: [
             Expanded(
@@ -30,7 +30,7 @@ class MossyDrawer extends StatelessWidget {
                     ))),
           ],
         ),
-        SizedBox(height: MossyTheme.paddingLg),
+        SizedBox(height: MossyPadding.lg),
         SidebarButton(
             onPressed: () {
               context.go('/exercises');
@@ -41,7 +41,7 @@ class MossyDrawer extends StatelessWidget {
               fontSize: MossyFontSize.lg,
               fontWeight: MFontWeight.bold,
             )),
-        SizedBox(height: MossyTheme.paddingLg),
+        SizedBox(height: MossyPadding.lg),
         SidebarButton(
             onPressed: () {
               context.go('/settings');
@@ -52,7 +52,7 @@ class MossyDrawer extends StatelessWidget {
               fontSize: MossyFontSize.lg,
               fontWeight: MFontWeight.bold,
             )),
-        SizedBox(height: MossyTheme.padding2Xl),
+        SizedBox(height: MossyPadding.xxl),
         SidebarButton(
             onPressed: () {
               context.go('/about');
@@ -63,8 +63,8 @@ class MossyDrawer extends StatelessWidget {
               fontSize: MossyFontSize.lg,
               fontWeight: MFontWeight.bold,
             )),
-        SizedBox(height: MossyTheme.padding2Xl),
-        SizedBox(height: MossyTheme.paddingMd),
+        SizedBox(height: MossyPadding.xxl),
+        SizedBox(height: MossyPadding.md),
         ShareLinks(
           inSidebar: true,
         )

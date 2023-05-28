@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:mossy_vibes/src/utils/theme.dart';
-import 'package:mossy_vibes/src/widgets/atoms/full_width.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercise/active_exercise/active_exercise.dart';
-import 'package:mossy_vibes/src/widgets/screens/exercise/active_exercise/breath_animation.dart';
 import 'package:mossy_vibes/src/widgets/molecules/mossy_log.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercise/start_exercise.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../main.dart';
-import '../../molecules/page_header/page_with_header.dart';
+import '../../../../_state.dart';
+import '../../molecules/page_with_header/page_with_header.dart';
 
 class ExerciseScreen extends StatefulWidget {
   final String exerciseId;
 
+  /// Renders a specific exercise to the user.
+  ///
+  /// The ExerciseScreen starts in the StartExercise state, only showing
+  /// context about the exercise and a button to start it. After the exercise
+  /// is started, this switches to the ActiveExercise state, which manages
+  /// the animations around breath and words.
   ExerciseScreen({required this.exerciseId});
 
   @override
@@ -26,6 +30,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   @override
   Widget build(BuildContext context) {
     MossyVibesState appState = context.watch<MossyVibesState>();
+
     final exercise = appState.exercises
         .where((exercise) => exercise.id == widget.exerciseId)
         .first;
@@ -44,7 +49,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
             onNext: () {
               if (mounted) {
                 setState(() {
-                  if (currentPromptIdx < exercise.prompts!.length - 1) {
+                  if (currentPromptIdx < (exercise?.prompts.length ?? 0) - 1) {
                     currentPromptIdx += 1;
                   } else {
                     isComplete = true;
@@ -68,11 +73,10 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
         body: Column(children: [
           statePage,
           Expanded(
-            child: SizedBox(height: MossyTheme.paddingMd),
+            child: SizedBox(height: MossyPadding.md),
           ),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: MossyTheme.paddingXl),
+            padding: const EdgeInsets.symmetric(horizontal: MossyPadding.xl),
             child: MossyLog(),
           )
         ]));

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mossy_vibes/src/models/exercise.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../main.dart';
+import '../../../../_state.dart';
 import '../../../models/filters.dart';
 import '../../../utils/theme.dart';
 import '../../atoms/animate_fade.dart';

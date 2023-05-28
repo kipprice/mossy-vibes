@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mossy_vibes/src/models/filters.dart';
 import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 
+import '../../../../../models/exercise_length.dart';
 import '../../../../../utils/theme.dart';
 
 class ExerciseLengthField extends StatelessWidget {

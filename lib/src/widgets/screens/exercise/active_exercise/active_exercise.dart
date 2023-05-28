@@ -7,7 +7,7 @@ import 'package:mossy_vibes/src/widgets/screens/exercise/active_exercise/complet
 import 'package:mossy_vibes/src/widgets/screens/exercise/active_exercise/prompt_scroller.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../main.dart';
+import '../../../../../_state.dart';
 import '../../../../utils/theme.dart';
 
 class ActiveExercise extends StatefulWidget {
@@ -45,7 +45,7 @@ class _ActiveExerciseState extends State<ActiveExercise> {
 
     final promptHeight = screenHeight * (1.0 / 4);
 
-    final prompt = widget.exercise.prompts![widget.currentPromptIdx];
+    final prompt = widget.exercise.prompts[widget.currentPromptIdx];
     if (prompt.type == BreathType.toggle) {
       setState(() {
         isBreathAnimationOn = !isBreathAnimationOn;

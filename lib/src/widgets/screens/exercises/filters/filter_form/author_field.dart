@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../../main.dart';
+import '../../../../../../_state.dart';
 import '../../../../../utils/theme.dart';
 import '../../../../atoms/mossy_text.dart';
 

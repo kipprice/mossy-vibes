@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../../main.dart';
+import '../../../../../../_state.dart';
 import '../../../../../utils/theme.dart';
 import '../../../../atoms/mossy_text.dart';
 
@@ -14,7 +14,7 @@ class TagField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MossyVibesState appState = context.watch<MossyVibesState>();
-    final tags = Set<String>();
+    final tags = <String>{};
     for (var ex in appState.exercises) {
       ex.tags != null ? tags.addAll(ex.tags!) : null;
     }

@@ -7,6 +7,7 @@ class CTAButton extends StatelessWidget {
   final void Function()? onPressed;
   final Widget child;
 
+  /// Creates an emphasized button, used to signal which action is recommended.
   CTAButton({required this.onPressed, required this.child});
 
   @override

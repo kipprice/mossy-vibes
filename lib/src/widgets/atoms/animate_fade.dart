@@ -8,6 +8,11 @@ class AnimateFadeAndRemove extends StatefulWidget {
   final int delay;
   final int duration;
 
+  /// Creates an element that can be faded in and out.
+  ///
+  /// In addition to the functionality offered by AnimatedOpacity, this
+  /// element also ensures that elements that are fully transparent are removed
+  /// from the render all together.
   const AnimateFadeAndRemove(
       {super.key,
       required this.isVisible,

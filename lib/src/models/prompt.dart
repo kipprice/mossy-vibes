@@ -151,6 +151,6 @@ class Prompt {
   factory Prompt.fromJson(Map<String, dynamic> prompt) {
     return Prompt(
         content: prompt['content'],
-        type: enumValueFromJson(BreathType.values, prompt['type']));
+        type: enumValueFromJson(BreathType.values, prompt['type'])!);
   }
 }

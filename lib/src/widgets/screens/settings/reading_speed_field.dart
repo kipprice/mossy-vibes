@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mossy_vibes/main.dart';
 import 'package:mossy_vibes/src/utils/theme.dart';
 import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../_state.dart';
 
 class ReadingSpeedField extends StatelessWidget {
   const ReadingSpeedField({super.key});

@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 import '../../utils/theme.dart';
 import '../atoms/mossy_text.dart';
 import '../molecules/mossy_log.dart';
-import '../molecules/page_header/page_with_header.dart';
+import '../molecules/page_with_header/page_with_header.dart';
 import '../molecules/share_links/share_links.dart';
 
 class AboutScreen extends StatelessWidget {
+  /// Renders high level details about Mossy Vibes.
+  ///
+  /// This screen is purposefully pretty sparse, containing just the basic
+  /// details about Mossy Vibes and its creators (us!).
+  AboutScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MossyPageWithHeader(

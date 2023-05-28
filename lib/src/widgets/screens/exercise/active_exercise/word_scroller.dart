@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-import 'package:mossy_vibes/main.dart';
 import 'package:mossy_vibes/src/utils/theme.dart';
 import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../_state.dart';
 import '../../../../models/exercise.dart';
 import '../../../../models/prompt.dart';
 
@@ -39,7 +39,7 @@ class _WordScrollerState extends State<WordScroller> {
   @override
   Widget build(BuildContext context) {
     MossyVibesState appState = context.watch<MossyVibesState>();
-    Prompt prompt = widget.exercise.prompts![widget.currentPromptIdx];
+    Prompt prompt = widget.exercise.prompts[widget.currentPromptIdx];
     List<String> words = prompt.splitIntoWords();
 
     if (wordIdx < words.length - 1) {
@@ -61,7 +61,7 @@ class _WordScrollerState extends State<WordScroller> {
     return Column(
       children: [
         Wrap(
-            spacing: MossyTheme.paddingMd,
+            spacing: MossyPadding.md,
             runSpacing: 0,
             alignment: WrapAlignment.center,
             children: [
@@ -78,7 +78,7 @@ class _WordScrollerState extends State<WordScroller> {
                           width: double.infinity,
                           height: MossyPadding.md,
                         )
-                      : MText(words[wIdx], fontSize: MossyTheme.fontLg),
+                      : MText(words[wIdx], fontSize: MossyFontSize.lg),
                 )
             ]),
       ],

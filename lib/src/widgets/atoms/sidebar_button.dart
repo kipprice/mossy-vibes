@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../main.dart';
 import '../../utils/theme.dart';
 import 'full_width.dart';
 
@@ -14,24 +12,23 @@ class SidebarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color getButtonFg(Set<MaterialState> states) {
-      return MossyTheme.offWhite;
+      return MossyColors.offWhite;
     }
 
-    MossyVibesState appState = context.watch<MossyVibesState>();
     return FullWidth(
       child: TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
             textStyle: MaterialStateProperty.resolveWith((states) => TextStyle(
-                  fontSize: MossyTheme.fontLg,
+                  fontSize: MossyFontSize.lg,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Quicksand',
                 )),
             foregroundColor: MaterialStateProperty.resolveWith(getButtonFg),
             padding: MaterialStateProperty.resolveWith(
-                (states) => EdgeInsets.all(MossyTheme.paddingMd)),
+                (states) => EdgeInsets.all(MossyPadding.md)),
             overlayColor: MaterialStateColor.resolveWith(
-                (states) => MossyTheme.offWhite.withAlpha(40))),
+                (states) => MossyColors.offWhite.withAlpha(40))),
         child: child,
       ),
     );

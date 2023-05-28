@@ -1,8 +1,6 @@
 import 'dart:math';
 
-import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 
 import '../../../utils/theme.dart';

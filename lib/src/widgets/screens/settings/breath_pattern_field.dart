@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mossy_vibes/main.dart';
-import 'package:mossy_vibes/src/models/preferences.dart';
 import 'package:mossy_vibes/src/utils/string_extension.dart';
 import 'package:mossy_vibes/src/utils/theme.dart';
 import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../_state.dart';
+import '../../../models/breath_pattern.dart';
 
 class BreathPatternField extends StatelessWidget {
   const BreathPatternField({super.key});

@@ -5,8 +5,8 @@ import 'package:mossy_vibes/src/widgets/screens/exercises/exercise_list.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercises/filters/filter_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../main.dart';
-import '../../molecules/page_header/page_with_header.dart';
+import '../../../../_state.dart';
+import '../../molecules/page_with_header/page_with_header.dart';
 
 class ExercisesScreen extends StatefulWidget {
   /// Renders all of the available exercises to the user.

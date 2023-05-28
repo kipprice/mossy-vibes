@@ -1,6 +1,9 @@
 # Mossy Vibes
 
-A new Flutter project.
+Mossy Vibes is a very simple, reading-based meditation tool with regular updates. 
+
+## Technology
+Mossy Vibes is built on top of Flutter, which is a coss-platform tool for building beautiful and consistent UIs across mobile and web. 
 
 ## Getting Started
 

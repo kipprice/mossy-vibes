@@ -47,7 +47,7 @@ class ExerciseParser {
 
         case LineType.breathToggle:
           isBreathFocused = !isBreathFocused;
-          out.prompts?.add(Prompt.breathToggle());
+          out.prompts.add(Prompt.breathToggle());
           break;
 
         default:
@@ -56,10 +56,10 @@ class ExerciseParser {
       }
     }
 
-    for (int pIdx = (out.prompts!.length - 1); pIdx >= 0; pIdx -= 1) {
-      Prompt p = out.prompts![pIdx];
+    for (int pIdx = (out.prompts.length - 1); pIdx >= 0; pIdx -= 1) {
+      Prompt p = out.prompts[pIdx];
       if (p.type == BreathType.toggle) {
-        out.prompts!.removeLast();
+        out.prompts.removeLast();
         continue;
       } else {
         break;
@@ -127,7 +127,7 @@ class ExerciseParser {
     switch (linePieces.length) {
       // full breath prompt
       case 1:
-        out.prompts?.add(Prompt(
+        out.prompts.add(Prompt(
             content: line,
             type: isBreathFocused ? BreathType.full : BreathType.none));
         break;
@@ -141,7 +141,7 @@ class ExerciseParser {
               : i == 1
                   ? BreathType.hold
                   : BreathType.out;
-          out.prompts?.add(Prompt(content: line, type: type));
+          out.prompts.add(Prompt(content: line, type: type));
         }
         break;
 

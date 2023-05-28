@@ -5,6 +5,7 @@ import 'package:mossy_vibes/src/widgets/screens/exercises/filters/filter_form/ex
 import 'package:mossy_vibes/src/widgets/screens/exercises/filters/filter_form/exercise_type_field.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercises/filters/filter_form/tag_field.dart';
 
+import '../../../../../models/exercise_length.dart';
 import '../../../../../models/filters.dart';
 import '../../../../../utils/theme.dart';
 

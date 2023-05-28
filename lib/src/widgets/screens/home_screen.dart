@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(MossyTheme.paddingLg),
+          padding: EdgeInsets.all(MossyPadding.lg),
           child: Center(
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 600),
