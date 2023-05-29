@@ -19,11 +19,20 @@ PODS:
   - GoogleUtilities/Logger (7.11.1):
     - GoogleUtilities/Environment
   - "GoogleUtilities/NSData+zlib (7.11.1)"
+  - package_info_plus (0.4.5):
+    - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
   - PromisesObjC (2.2.0)
   - ReachabilitySwift (5.0.0)
+  - Sentry/HybridSDK (8.7.2):
+    - SentryPrivate (= 8.7.2)
+  - sentry_flutter (0.0.1):
+    - Flutter
+    - FlutterMacOS
+    - Sentry/HybridSDK (= 8.7.2)
+  - SentryPrivate (8.7.2)
   - url_launcher_ios (0.0.1):
     - Flutter
 
@@ -31,7 +40,9 @@ DEPENDENCIES:
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
@@ -42,6 +53,8 @@ SPEC REPOS:
     - GoogleUtilities
     - PromisesObjC
     - ReachabilitySwift
+    - Sentry
+    - SentryPrivate
 
 EXTERNAL SOURCES:
   connectivity_plus:
@@ -50,8 +63,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  sentry_flutter:
+    :path: ".symlinks/plugins/sentry_flutter/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
@@ -63,9 +80,13 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: d2b4acb827908e72eca47a9fd896767c3053921e
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   GoogleUtilities: 9aa0ad5a7bc171f8bae016300bfcfa3fb8425749
+  package_info_plus: fd030dabf36271f146f1f3beacd48f564b0f17f7
   path_provider_foundation: eaf5b3e458fc0e5fbb9940fb09980e853fe058b8
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  Sentry: c43b6d1d51bf96edbaeac7772c4178aa54f4f450
+  sentry_flutter: 354c51276054f9f8a9b276967172aeb2e91d8a69
+  SentryPrivate: 760a9fd5d134c4d926c4c0afe9c4deceadbf4557
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
 
 PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189

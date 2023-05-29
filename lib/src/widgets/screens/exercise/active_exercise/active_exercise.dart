@@ -43,7 +43,7 @@ class _ActiveExerciseState extends State<ActiveExercise> {
 
     final screenHeight = MediaQuery.of(context).size.height;
 
-    final promptHeight = screenHeight * (1.0 / 4);
+    final promptHeight = screenHeight * (1.0 / 5);
 
     final prompt = widget.exercise.prompts[widget.currentPromptIdx];
     if (prompt.type == BreathType.toggle) {
@@ -52,33 +52,40 @@ class _ActiveExerciseState extends State<ActiveExercise> {
       });
     }
 
-    return FullWidth(
-        child: Column(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
-            height: promptHeight,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                PromptScroller(
-                    currentPromptIdx: widget.currentPromptIdx,
-                    exercise: widget.exercise,
-                    onNext: widget.onNext,
-                    isComplete: widget.isComplete)
-              ],
-            )),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: promptHeight),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              PromptScroller(
+                  currentPromptIdx: widget.currentPromptIdx,
+                  exercise: widget.exercise,
+                  onNext: widget.onNext,
+                  isComplete: widget.isComplete),
+            ],
+          ),
+        ),
         SizedBox(
           height: MossyPadding.xl,
         ),
-        BreathAnimation(
-          preferences: appState.preferences,
-          isVisible: isBreathAnimationOn,
-        ),
-        CompleteButtons(
-          isComplete: widget.isComplete,
-          onReset: widget.onReset,
+        Stack(
+          children: [
+            Center(
+              child: BreathAnimation(
+                preferences: appState.preferences,
+                isVisible: isBreathAnimationOn,
+              ),
+            ),
+            CompleteButtons(
+              isComplete: widget.isComplete,
+              onReset: widget.onReset,
+            )
+          ],
         )
       ],
-    ));
+    );
   }
 }

@@ -28,6 +28,14 @@ class PromptScroller extends StatefulWidget {
 }
 
 class _PromptScrollerState extends State<PromptScroller> {
+  Timer? _nextTimer;
+
+  @override
+  void dispose() {
+    _nextTimer?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     MossyVibesState appState = context.watch<MossyVibesState>();
@@ -36,7 +44,7 @@ class _PromptScrollerState extends State<PromptScroller> {
     int promptLength = prompt.getLengthInSeconds(appState.preferences);
 
     if (!widget.isComplete) {
-      Timer(Duration(seconds: promptLength), () {
+      _nextTimer = Timer(Duration(seconds: promptLength), () {
         widget.onNext();
       });
     }
@@ -46,6 +54,7 @@ class _PromptScrollerState extends State<PromptScroller> {
       child: Stack(alignment: Alignment.center, children: [
         for (var pIdx = 0; pIdx < widget.exercise.prompts.length; pIdx += 1)
           AnimateFadeAndRemove(
+            duration: 100,
             isVisible: pIdx == widget.currentPromptIdx,
             child: WordScroller(
                 key: Key('word-scroller-${widget.currentPromptIdx}'),

@@ -40,8 +40,9 @@ class MossyPageWithHeader extends StatelessWidget {
         body: SafeArea(
             child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 600),
-            child: Padding(
+            constraints: BoxConstraints(
+                maxWidth: 600, maxHeight: MediaQuery.of(context).size.height),
+            child: Container(
               padding: EdgeInsets.all(padding),
               child: body,
             ),

@@ -43,7 +43,7 @@ Future<void> runFormattedTests(bool withCoverage) async {
       }
 
       // print this line in a nice readable way
-      print('${match[1]}$localContent');
+      print(' ${match[1]}$localContent');
 
       // print the line as is if it doesn't match our expected format (which
       // in most cases means it is context about an error)
@@ -67,9 +67,9 @@ Future<void> generateCoverageHtml() async {
 
 void printFileHeader(String fileName) {
   print('');
-  print('=' * fileName.length);
-  print(fileName.toUpperCase());
-  print('=' * fileName.length);
+  print('=' * (fileName.length + 2));
+  print(' ${fileName.toUpperCase()}');
+  print('=' * (fileName.length + 2));
   print('');
 }
 
@@ -92,6 +92,6 @@ String getGroup(String content) {
 
 void printGroupHeader(String groupName) {
   print('');
-  print(groupName);
-  print('-' * groupName.length);
+  print(' $groupName');
+  print(' ${'-' * (groupName.length)}');
 }

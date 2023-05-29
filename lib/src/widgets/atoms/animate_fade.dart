@@ -27,6 +27,15 @@ class AnimateFadeAndRemove extends StatefulWidget {
 class _AnimateFadeState extends State<AnimateFadeAndRemove> {
   bool _isRendered = false;
   bool _isFadingIn = false;
+  Timer? _fadeInTimer;
+  Timer? _removeTimer;
+
+  @override
+  void dispose() {
+    _fadeInTimer?.cancel();
+    _removeTimer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +45,7 @@ class _AnimateFadeState extends State<AnimateFadeAndRemove> {
         _isRendered = true;
         _isFadingIn = true;
       });
-      Timer(Duration(milliseconds: widget.delay), () {
+      _fadeInTimer = Timer(Duration(milliseconds: widget.delay), () {
         setState(() {
           _isFadingIn = false;
         });
@@ -45,7 +54,8 @@ class _AnimateFadeState extends State<AnimateFadeAndRemove> {
 
     // otherwise remove this element
     if (!widget.isVisible && _isRendered) {
-      Timer(Duration(milliseconds: widget.duration + widget.delay), () {
+      _removeTimer =
+          Timer(Duration(milliseconds: widget.duration + widget.delay), () {
         if (mounted) {
           setState(() {
             _isRendered = false;

@@ -69,16 +69,15 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
             isComplete: isComplete);
 
     return MossyPageWithHeader(
-        title: exercise.title ?? '',
-        body: Column(children: [
-          statePage,
-          Expanded(
-            child: SizedBox(height: MossyPadding.md),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: MossyPadding.xl),
-            child: MossyLog(),
-          )
-        ]));
+      title: exercise.title ?? '',
+      body: Column(children: [
+        Expanded(child: statePage),
+        SizedBox(height: MossyPadding.md),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: MossyPadding.xl),
+          child: MossyLog(),
+        )
+      ]),
+    );
   }
 }

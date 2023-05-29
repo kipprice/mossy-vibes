@@ -70,13 +70,24 @@ class Prompt {
         return breathsToRead * fullBreath;
 
       case BreathType.intake:
+        final intakeOffset =
+            ((breathsToRead - 1) * fullBreath) + preferences.inBreathInSeconds;
+
         return secondsToRead > preferences.inBreathInSeconds
-            ? breathsToRead * fullBreath
+            ? (secondsToRead > intakeOffset || intakeOffset < fullBreath
+                ? intakeOffset + fullBreath
+                : intakeOffset)
             : preferences.inBreathInSeconds;
 
       case BreathType.hold:
+        final holdOffset = ((breathsToRead - 1) * fullBreath) +
+            preferences.inBreathInSeconds +
+            preferences.holdBreathInSeconds;
+
         return secondsToRead > preferences.holdBreathInSeconds
-            ? breathsToRead * fullBreath
+            ? (secondsToRead > holdOffset || holdOffset < fullBreath
+                ? holdOffset + fullBreath
+                : holdOffset)
             : preferences.holdBreathInSeconds;
 
       case BreathType.out:

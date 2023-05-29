@@ -16,6 +16,8 @@ class WordScroller extends StatefulWidget {
   final void Function() onNext;
   final Exercise exercise;
 
+  /// Handles fading words in and out at the reading speed the user has elected
+  /// for.
   WordScroller({
     super.key,
     required this.currentPromptIdx,
@@ -29,11 +31,18 @@ class WordScroller extends StatefulWidget {
 
 class _WordScrollerState extends State<WordScroller> {
   int wordIdx = 0;
+  Timer? _wordTimer;
 
   @override
   void initState() {
     wordIdx = 0;
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _wordTimer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -46,7 +55,7 @@ class _WordScrollerState extends State<WordScroller> {
       final delayInSeconds = words[wordIdx] == '¶'
           ? 1
           : appState.preferences.calculateSecondsPerWord();
-      var tm =
+      _wordTimer =
           Timer(Duration(milliseconds: (delayInSeconds * 1000).toInt()), () {
         if (mounted) {
           if (wordIdx < words.length - 1) {
