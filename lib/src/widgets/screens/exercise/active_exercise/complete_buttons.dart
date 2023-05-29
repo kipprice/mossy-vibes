@@ -5,23 +5,18 @@ import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 
 import '../../../../utils/theme.dart';
 import '../../../atoms/inline_button.dart';
+import '../exercise_state.dart';
 
-class CompleteButtons extends StatefulWidget {
-  final bool isComplete;
-  final void Function() onReset;
+class CompleteButtons extends StatelessWidget {
+  const CompleteButtons({super.key});
 
-  const CompleteButtons(
-      {super.key, required this.isComplete, required this.onReset});
-
-  @override
-  State<CompleteButtons> createState() => _CompleteButtonsState();
-}
-
-class _CompleteButtonsState extends State<CompleteButtons> {
   @override
   Widget build(BuildContext context) {
+    final exerciseState = ExerciseContext.of(context);
+    bool isComplete = exerciseState.isComplete;
+
     return AnimateFadeAndRemove(
-      isVisible: widget.isComplete,
+      isVisible: isComplete,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: MossyPadding.xl),
         child: Row(
@@ -39,7 +34,7 @@ class _CompleteButtonsState extends State<CompleteButtons> {
             SizedBox(width: MossyPadding.lg),
             Expanded(
                 child: InlineButton(
-                    onPressed: widget.onReset,
+                    onPressed: exerciseState.onReset,
                     child: MText(
                       'Restart',
                       fontWeight: MFontWeight.base,

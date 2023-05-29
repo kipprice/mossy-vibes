@@ -2,71 +2,87 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+enum AnimateFadeStatus {
+  unrendered(isRendered: false, opacity: 0),
+  added(isRendered: true, opacity: 0),
+  ready(isRendered: true, opacity: 1),
+  fadingOut(isRendered: true, opacity: 0),
+  removed(isRendered: false, opacity: 0);
+
+  const AnimateFadeStatus({required this.isRendered, required this.opacity});
+  final bool isRendered;
+  final double opacity;
+}
+
 class AnimateFadeAndRemove extends StatefulWidget {
   final bool isVisible;
   final Widget child;
-  final int delay;
+  final int delayIn;
   final int duration;
+  final int delayOut;
 
   /// Creates an element that can be faded in and out.
   ///
   /// In addition to the functionality offered by AnimatedOpacity, this
   /// element also ensures that elements that are fully transparent are removed
   /// from the render all together.
-  const AnimateFadeAndRemove(
-      {super.key,
-      required this.isVisible,
-      required this.child,
-      this.delay = 1,
-      this.duration = 400});
+  const AnimateFadeAndRemove({
+    super.key,
+    required this.isVisible,
+    required this.child,
+    this.delayIn = 1,
+    this.delayOut = 0,
+    this.duration = 400,
+  });
 
   @override
   State<AnimateFadeAndRemove> createState() => _AnimateFadeState();
 }
 
 class _AnimateFadeState extends State<AnimateFadeAndRemove> {
-  bool _isRendered = false;
-  bool _isFadingIn = false;
-  Timer? _fadeInTimer;
+  AnimateFadeStatus status = AnimateFadeStatus.unrendered;
+  Timer? _renderTimer;
   Timer? _removeTimer;
+  Timer? _fadeTimer;
 
   @override
   void dispose() {
-    _fadeInTimer?.cancel();
+    _renderTimer?.cancel();
     _removeTimer?.cancel();
+    _fadeTimer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     // render if visible
-    if (widget.isVisible && !_isRendered) {
+    if (widget.isVisible && !status.isRendered) {
       setState(() {
-        _isRendered = true;
-        _isFadingIn = true;
+        status = AnimateFadeStatus.added;
       });
-      _fadeInTimer = Timer(Duration(milliseconds: widget.delay), () {
+      _renderTimer = Timer(Duration(milliseconds: widget.delayIn), () {
         setState(() {
-          _isFadingIn = false;
+          status = AnimateFadeStatus.ready;
         });
       });
     }
 
     // otherwise remove this element
-    if (!widget.isVisible && _isRendered) {
+    if (!widget.isVisible && status.isRendered) {
+      setState(() {
+        status = AnimateFadeStatus.fadingOut;
+      });
       _removeTimer =
-          Timer(Duration(milliseconds: widget.duration + widget.delay), () {
-        if (mounted) {
-          setState(() {
-            _isRendered = false;
-          });
-        }
+          Timer(Duration(milliseconds: widget.duration + widget.delayOut), () {
+        setState(() {
+          status = AnimateFadeStatus.removed;
+        });
       });
     }
 
-    return _isRendered
+    return status.isRendered
         ? AnimatedOpacity(
-            opacity: widget.isVisible && !_isFadingIn ? 1.0 : 0.0,
+            opacity: status.opacity,
             duration: Duration(milliseconds: widget.duration),
             child: widget.child)
         : Container();

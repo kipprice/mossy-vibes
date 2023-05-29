@@ -1,29 +1,30 @@
 import 'package:flutter/widgets.dart';
-import 'package:mossy_vibes/src/models/exercise.dart';
 import 'package:mossy_vibes/src/utils/theme.dart';
 import 'package:mossy_vibes/src/widgets/atoms/cta_button.dart';
 import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../_state.dart';
+import 'exercise_state.dart';
 
 class StartExercise extends StatelessWidget {
-  final Exercise exercise;
-  final void Function() onStart;
-
   /// Renders the exercise details and "Start Exercise" button to the user.
   ///
   /// The StartExercise screen only ever appears when the user is coming from
   /// the ExercisesScreen; when restarting an exercise, the exercise is
   /// immediately re-rendered on the starting prompt.
-  StartExercise({required this.exercise, required this.onStart});
+  StartExercise({super.key});
 
   @override
   Widget build(BuildContext context) {
     final appState = context.watch<MossyVibesState>();
     final preferences = appState.preferences;
 
-    final lengthInMinutes = exercise.getLengthInMinutes(preferences);
+    final exerciseState = ExerciseContext.of(context);
+    final exercise = exerciseState.exercise;
+
+    final lengthInMinutes =
+        exerciseState.exercise.getLengthInMinutes(preferences);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -73,7 +74,7 @@ class StartExercise extends StatelessWidget {
           padding: const EdgeInsets.all(MossyPadding.xl),
           child: CTAButton(
               onPressed: () {
-                onStart();
+                exerciseState.onStart();
               },
               child: MText(
                 'Begin',

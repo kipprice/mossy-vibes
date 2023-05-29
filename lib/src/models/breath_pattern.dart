@@ -9,8 +9,11 @@ enum BreathPattern {
   relaxed(intake: 4, hold: 7, out: 8);
 
   /// Tracks how the user prefers to have the breathing animation timed out.
-  const BreathPattern(
-      {required this.intake, required this.hold, required this.out});
+  const BreathPattern({
+    required this.intake,
+    required this.hold,
+    required this.out,
+  });
 
   /// how long the breath in should take, in seconds.
   final int intake;
@@ -24,5 +27,5 @@ enum BreathPattern {
   /// what gap should be placed between breaths
   ///
   /// This is currently not configurable, but may be in the future
-  final int padding = 1;
+  final int padding = 2;
 }

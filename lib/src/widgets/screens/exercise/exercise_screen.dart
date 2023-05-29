@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mossy_vibes/src/utils/theme.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercise/active_exercise/active_exercise.dart';
 import 'package:mossy_vibes/src/widgets/molecules/mossy_log.dart';
+import 'package:mossy_vibes/src/widgets/screens/exercise/exercise_state.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercise/start_exercise.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +25,6 @@ class ExerciseScreen extends StatefulWidget {
 }
 
 class _ExerciseScreenState extends State<ExerciseScreen> {
-  int currentPromptIdx = -1;
   bool isComplete = false;
 
   @override
@@ -35,49 +35,36 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
         .where((exercise) => exercise.id == widget.exerciseId)
         .first;
 
-    Widget statePage = currentPromptIdx == -1
-        ? StartExercise(
-            exercise: exercise,
-            onStart: () {
-              setState(() {
-                currentPromptIdx = 0;
-              });
-            },
-          )
-        : ActiveExercise(
-            currentPromptIdx: currentPromptIdx,
-            onNext: () {
-              if (mounted) {
-                setState(() {
-                  if (currentPromptIdx < (exercise?.prompts.length ?? 0) - 1) {
-                    currentPromptIdx += 1;
-                  } else {
-                    isComplete = true;
-                  }
-                });
-              }
-            },
-            onReset: () {
-              if (mounted) {
-                setState(() {
-                  currentPromptIdx = 0;
-                  isComplete = false;
-                });
-              }
-            },
-            exercise: exercise,
-            isComplete: isComplete);
-
     return MossyPageWithHeader(
       title: exercise.title ?? '',
-      body: Column(children: [
-        Expanded(child: statePage),
-        SizedBox(height: MossyPadding.md),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: MossyPadding.xl),
-          child: MossyLog(),
-        )
-      ]),
+      body: ExerciseContextWidget(
+        exercise: exercise,
+        child: InnerExerciseScreen(),
+      ),
     );
+  }
+}
+
+class InnerExerciseScreen extends StatelessWidget {
+  const InnerExerciseScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final exerciseState = ExerciseContext.of(context);
+    final exercise = exerciseState.exercise;
+    final currentPromptIdx = exerciseState.currentPromptIdx;
+
+    Widget statePage = currentPromptIdx == -1
+        ? StartExercise(key: Key('start-exercise-${exercise.id}'))
+        : ActiveExercise(key: Key('active-exercise-${exercise.id}'));
+
+    return Column(children: [
+      Expanded(child: statePage),
+      SizedBox(height: MossyPadding.md),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: MossyPadding.xl),
+        child: MossyLog(),
+      )
+    ]);
   }
 }

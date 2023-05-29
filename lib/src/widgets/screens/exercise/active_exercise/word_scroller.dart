@@ -3,27 +3,20 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:mossy_vibes/src/utils/theme.dart';
 import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
+import 'package:mossy_vibes/src/widgets/screens/exercise/exercise_state.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../_state.dart';
-import '../../../../models/exercise.dart';
-import '../../../../models/prompt.dart';
 
 /// WordScroller highlights the text in an exercise one-by-one, in order to
 /// help the user stay focused on the application.
 class WordScroller extends StatefulWidget {
-  final int currentPromptIdx;
-  final void Function() onNext;
-  final Exercise exercise;
+  final int promptIdx;
+  final int delayBy;
 
   /// Handles fading words in and out at the reading speed the user has elected
   /// for.
-  WordScroller({
-    super.key,
-    required this.currentPromptIdx,
-    required this.onNext,
-    required this.exercise,
-  });
+  WordScroller({super.key, required this.promptIdx, required this.delayBy});
 
   @override
   State<WordScroller> createState() => _WordScrollerState();
@@ -48,15 +41,21 @@ class _WordScrollerState extends State<WordScroller> {
   @override
   Widget build(BuildContext context) {
     MossyVibesState appState = context.watch<MossyVibesState>();
-    Prompt prompt = widget.exercise.prompts[widget.currentPromptIdx];
+
+    final exerciseState = ExerciseContext.of(context);
+    final prompt = exerciseState.exercise.prompts[widget.promptIdx];
+
     List<String> words = prompt.splitIntoWords();
 
     if (wordIdx < words.length - 1) {
       final delayInSeconds = words[wordIdx] == '¶'
           ? 1
           : appState.preferences.calculateSecondsPerWord();
-      _wordTimer =
-          Timer(Duration(milliseconds: (delayInSeconds * 1000).toInt()), () {
+
+      final delayInMs =
+          (delayInSeconds * 1000).toInt() + (wordIdx == 0 ? widget.delayBy : 0);
+
+      _wordTimer = Timer(Duration(milliseconds: delayInMs), () {
         if (mounted) {
           if (wordIdx < words.length - 1) {
             setState(() {

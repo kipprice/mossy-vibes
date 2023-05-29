@@ -45,8 +45,8 @@ class ExerciseList extends StatelessWidget {
 
     return AnimateFadeAndRemove(
       isVisible: isVisible,
-      delay: 200,
-      duration: 300,
+      delayIn: 300,
+      duration: 200,
       child: Padding(
         padding: const EdgeInsets.all(MossyPadding.md),
         child: ListView(
