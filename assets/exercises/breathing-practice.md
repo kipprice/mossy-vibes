@@ -17,3 +17,4 @@ Enjoy your focus today!
 
 [_meta:author]:- "Kip"
 [_meta:tags]:- "beginnings"
+[_meta:date-added]:- "2023-05-04T00:00:00.000"

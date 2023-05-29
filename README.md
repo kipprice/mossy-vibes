@@ -1,6 +1,6 @@
 # Mossy Vibes
 
-Mossy Vibes is a very simple, reading-based meditation tool with regular updates. 
+Mossy Vibes is a very simple, reading-based meditation tool with regular updates. We opted for reading-based meditations so you can meditate in settings that otherwise might not be conducive to audio mediums.
 
 ## Technology
 Mossy Vibes is built on top of Flutter, which is a coss-platform tool for building beautiful and consistent UIs across mobile and web. 

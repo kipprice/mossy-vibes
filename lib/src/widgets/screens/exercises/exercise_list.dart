@@ -37,11 +37,22 @@ class ExerciseList extends StatelessWidget {
   Widget build(BuildContext context) {
     MossyVibesState appState = context.watch<MossyVibesState>();
 
-    final exercises = appState.exercises.where((ex) =>
-        ex.size == mode &&
-        filters.shouldShowExercise(ex, appState.preferences));
+    final exercises = appState.exercises
+        .where((ex) =>
+            ex.size == mode &&
+            filters.shouldShowExercise(ex, appState.preferences))
+        .toList();
 
-    print('filters ${filters.exerciseType}');
+    exercises.sort((Exercise a, Exercise b) {
+      final diffInMinutes = a.getLengthInMinutes(appState.preferences) -
+          b.getLengthInMinutes(appState.preferences);
+      if (diffInMinutes != 0) {
+        return diffInMinutes;
+      }
+
+      return (a.dateAdded?.millisecondsSinceEpoch ?? 0) -
+          (b.dateAdded?.millisecondsSinceEpoch ?? 0);
+    });
 
     return AnimateFadeAndRemove(
       isVisible: isVisible,

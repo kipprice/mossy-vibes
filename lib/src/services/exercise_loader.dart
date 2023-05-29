@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart' as Foundation;
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/widgets.dart';
@@ -7,6 +8,23 @@ import 'package:http/http.dart' as http;
 
 import '../models/exercise.dart';
 import 'exercise_parser.dart';
+
+const exercises = [
+  'first-meditation',
+  'micro-presence',
+  'love',
+  'benefits-of-meditation',
+  'breathing-practice',
+  'gratitude',
+  'mossy-overview',
+  'relaxation',
+  'self-care',
+  'taking-a-moment',
+  'waking-up',
+  'what-is-mindfulness'
+];
+
+const testExercises = ['_test', '_kindness'];
 
 class ExerciseLoader {
   final storageFile = 'exercises.json';
@@ -95,9 +113,13 @@ class ExerciseLoader {
   Future<Map<String, Exercise>> _loadFromGithub(
       Map<String, Exercise> out) async {
     final listUrl = Uri.parse(
-        'https://api.github.com/repos/kipprice/mossy-vibes/contents/models/exercises');
+        'https://api.github.com/repos/kipprice/mossy-vibes/contents/assets/exercises');
 
     final listResp = await http.get(listUrl);
+    if (listResp.statusCode != 200) {
+      return out;
+    }
+
     List<dynamic> listBody = jsonDecode(listResp.body);
 
     // build up the map that can load the rest of the files
@@ -118,24 +140,31 @@ class ExerciseLoader {
       fileMap[idMatch[1]!] = fileDetails['download_url'];
     }
 
-    final List<Future<Exercise>> promises = [];
+    final List<Future<Exercise?>> promises = [];
     fileMap.forEach((id, url) {
       promises.add(Future(() async {
         final resp = await http.get(Uri.parse(url));
-        return ExerciseParser().parse(id, resp.body);
+        if (resp.statusCode == 200) {
+          return ExerciseParser().parse(id, resp.body);
+        } else {
+          return null;
+        }
       }));
     });
 
     // wait for all of the files to load
     final exerciseResults = await Future.wait(promises);
     for (var ex in exerciseResults) {
+      if (ex == null) {
+        continue;
+      }
+
       if (ex.prompts.isEmpty) {
         continue;
       }
+
       out[ex.id] = ex;
     }
-
-    print('OUT: $out');
 
     return out;
   }
@@ -157,6 +186,18 @@ class ExerciseLoader {
       final file = await bundle.loadString('assets/exercises/$exerciseId.md');
       final parsedExercise = ExerciseParser().parse(exerciseId, file);
       out[exerciseId] = parsedExercise;
+    }
+
+    // when in non-release mode, test exercises also get added
+    if (!Foundation.kReleaseMode) {
+      for (String exerciseId in testExercises) {
+        if (out[exerciseId] != null) {
+          continue;
+        }
+        final file = await bundle.loadString('assets/exercises/$exerciseId.md');
+        final parsedExercise = ExerciseParser().parse(exerciseId, file);
+        out[exerciseId] = parsedExercise;
+      }
     }
 
     return out;

@@ -1,8 +1,5 @@
-import 'package:mossy_vibes/src/models/prompt.dart';
-
 import '../models/exercise.dart';
-
-final exercises = ['_test', 'first-meditation', 'micro-presence', 'love'];
+import '../models/prompt.dart';
 
 enum LineType { meta, breathToggle, title, prompt }
 
