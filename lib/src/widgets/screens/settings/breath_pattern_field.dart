@@ -28,7 +28,7 @@ class BreathPatternField extends StatelessWidget {
             DropdownMenuItem(
                 value: pattern,
                 child: MText(
-                  pattern.name.capitalize(),
+                  '${pattern.name.capitalize()} (${pattern.intake} • ${pattern.hold} • ${pattern.out})',
                   fontWeight: MFontWeight.base,
                 )),
         ],
