@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart' as Foundation;
+import 'package:flutter/foundation.dart' as flutter_config;
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/widgets.dart';
@@ -189,7 +189,7 @@ class ExerciseLoader {
     }
 
     // when in non-release mode, test exercises also get added
-    if (!Foundation.kReleaseMode) {
+    if (!flutter_config.kReleaseMode) {
       for (String exerciseId in testExercises) {
         if (out[exerciseId] != null) {
           continue;
