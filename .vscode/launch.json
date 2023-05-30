@@ -7,7 +7,8 @@
     {
       "name": "mossy_vibes_flutter",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
+      "args": ["--dart-define-from-file", ".env.json"]
     },
     {
       "name": "mossy_vibes_flutter (profile mode)",

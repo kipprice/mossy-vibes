@@ -25,12 +25,20 @@ class AboutScreen extends StatelessWidget {
             children: [
               MText('Welcome to Mossy Vibes!'),
               SizedBox(height: MossyPadding.lg),
-              MText(
-                'We created Mossy Vibes as a way to make it easier to find meditative and mindful moments, no matter where you are mentally or physically. The exercises are short, and designed to be read rather than listened to; and every day, we try to add a new one!',
-              ),
+              MText('''
+                  We created Mossy Vibes as a way to make it easier to find meditative and mindful moments, no matter 
+                  where you are mentally or physically. The exercises are short, and designed to be read rather than 
+                  listened to; and every day, we try to add a new one!
+                '''),
               SizedBox(height: MossyPadding.lg),
               MText(
-                'We don\'t track any of your data, but we do store your preferences directly on your device. This information is only visible to you.',
+                '''
+                      The Mossy Vibes team never has access to any of your personal information.We save your settings 
+                      and favorites directly to the device you're using Mossy Vibes on, which is only ever accessible to 
+                      you. We do collect anonymous information about how Mossy Vibes is being used to help us keep 
+                      getting better (and to fix bugs), but none of that information is tied back to you (nor is it ever
+                      used for advertising). 
+                  ''',
               ),
               SizedBox(height: MossyPadding.lg),
               MText(

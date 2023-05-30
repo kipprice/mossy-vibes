@@ -7,7 +7,6 @@ import 'package:mossy_vibes/src/widgets/screens/exercise/exercise_state.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../_state.dart';
-import '../../../../models/exercise.dart';
 import '../../../../models/prompt.dart';
 
 class PromptScroller extends StatefulWidget {
