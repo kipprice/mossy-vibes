@@ -15,7 +15,10 @@ class AuthorField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MossyVibesState appState = context.watch<MossyVibesState>();
-    final authors = appState.exercises.map((ex) => ex.author).toSet();
+    final authors = appState.exercises
+        .map((ex) => ex.author)
+        .where((author) => author != null)
+        .toSet();
 
     return DropdownButtonFormField<String>(
         dropdownColor: MossyColors.darkestGreen,

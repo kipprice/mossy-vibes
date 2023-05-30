@@ -73,9 +73,7 @@ class StartExercise extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(MossyPadding.xl),
           child: CTAButton(
-              onPressed: () {
-                exerciseState.onStart();
-              },
+              onPressed: exerciseState.onStart,
               child: MText(
                 'Begin',
                 fontWeight: MFontWeight.bold,

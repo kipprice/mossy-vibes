@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '_state.dart';
-import 'firebase_options.dart';
 import 'src/services/router.dart';
 import 'src/utils/theme.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
-  await dotenv.load(fileName: '.env');
-
-  // we're not using Firebase for anything meaningful currently, but we still
-  // make sure its initialized
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  const sentryDsn = String.fromEnvironment('sentry_dsn');
+  double sampleRate =
+      double.tryParse(const String.fromEnvironment('sentry_sample_rate')) ??
+          1.0;
 
   // the application is wrapped in Sentry to aid in error reporting and basic
   // analytics
   await SentryFlutter.init((options) {
-    options.dsn = dotenv.env['SENTRY_DSN'];
-    options.tracesSampleRate = 1.0;
-  }, appRunner: () => runApp(MossyVibes()));
+    options.dsn = sentryDsn;
+    options.tracesSampleRate = sampleRate;
+  }, appRunner: () {
+    WidgetsFlutterBinding.ensureInitialized();
+    // await Firebase.initializeApp(
+    //   options: DefaultFirebaseOptions.currentPlatform,
+    // );
+    return runApp(SentryUserInteractionWidget(child: MossyVibes()));
+  });
 }
 
 class MossyVibes extends StatelessWidget {

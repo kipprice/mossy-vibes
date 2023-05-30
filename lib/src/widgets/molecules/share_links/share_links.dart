@@ -28,6 +28,7 @@ class ShareLinks extends StatelessWidget {
     return Flex(
       direction: width > 400 ? Axis.horizontal : Axis.vertical,
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ShareSection(title: 'Our Info', children: [
           IconButton(

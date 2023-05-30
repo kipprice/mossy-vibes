@@ -129,6 +129,19 @@ class ExerciseParser {
             type: isBreathFocused ? BreathType.full : BreathType.none));
         break;
 
+      // non-toggling blank line
+      case 2:
+        String pc1 = linePieces[0].trim();
+        String pc2 = linePieces[1].trim();
+        if (pc1.isEmpty && pc2.isEmpty) {
+          out.prompts.add(Prompt(
+              content: '',
+              type: isBreathFocused ? BreathType.full : BreathType.none));
+          break;
+        } else {
+          print('WARNING: "$line" is not a valid prompt');
+        }
+
       // split breath prompt
       case 3:
         for (var i = 0; i < linePieces.length; i += 1) {
