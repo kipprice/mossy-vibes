@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mossy_vibes/src/widgets/screens/about_screen.dart';
+import 'package:mossy_vibes/src/widgets/screens/about/about_screen.dart';
 
 void main() {
   Widget testBuilder(Widget childToTest) {
