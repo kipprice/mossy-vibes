@@ -1,12 +1,9 @@
-import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:flutter/material.dart';
 import 'package:mossy_vibes/src/services/analytics_service.dart';
 import 'package:mossy_vibes/src/widgets/atoms/inline_button.dart';
 import 'package:mossy_vibes/src/widgets/screens/about/privacy/privacy_details.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../../../../utils/theme.dart';
-import '../../../atoms/secondary_button.dart';
 import '../../../atoms/mossy_text.dart';
 
 class PrivacySection extends StatefulWidget {

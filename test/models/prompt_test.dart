@@ -81,7 +81,7 @@ void main() {
         final p = Prompt(
             type: BreathType.intake,
             content:
-                '$promptText $promptText $promptText $promptText $promptText $promptText'); // 36 words, 18 seconds
+                '$promptText $promptText $promptText $promptText $promptText $promptText $promptText'); // 36 words, 18 seconds
         expect(
             p.getLengthInSeconds(preferences),
             preferences.calculateFullBreathInSeconds() * 2 +
