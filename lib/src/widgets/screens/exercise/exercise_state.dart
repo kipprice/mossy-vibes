@@ -24,8 +24,8 @@ class ExerciseContextWidgetState extends State<ExerciseContextWidget> {
 
   @override
   void dispose() {
-    super.dispose();
     WakelockService().disable();
+    super.dispose();
   }
 
   @override

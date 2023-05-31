@@ -27,14 +27,17 @@ class AnalyticsService {
   Future<bool> _loadAnalyticsStatus() async {
     final LocalStorage storage = LocalStorage(storageFile);
     await storage.ready;
-    return bool.tryParse(storage.getItem('analyticsDisabled') ?? 'false') ??
-        false;
+    return storage.getItem('analyticsDisabled') ?? false;
   }
 
   /// allows the user to opt out of sending any analytics
-  Future<void> toggleCollectionOfAnalytics() async {
-    _analyticsDisabled ??= await _loadAnalyticsStatus();
-    _analyticsDisabled = !_analyticsDisabled!;
+  Future<void> toggleCollectionOfAnalytics([bool? disableAnalytics]) async {
+    if (disableAnalytics != null) {
+      _analyticsDisabled = disableAnalytics;
+    } else {
+      _analyticsDisabled ??= await _loadAnalyticsStatus();
+      _analyticsDisabled = !_analyticsDisabled!;
+    }
 
     // store the changed permission back to storage
     final LocalStorage storage = LocalStorage(storageFile);
@@ -44,7 +47,11 @@ class AnalyticsService {
 
   Future<void> track(AnalyticEventType type,
       [Map<String, dynamic> properties = const {}]) async {
-    print('tracking event "${type.name}"');
+    if (await analyticsDisabled) {
+      print('INFO: analytics disabled for user');
+    } else {
+      print('tracking event "${type.name}"');
+    }
   }
 }
 

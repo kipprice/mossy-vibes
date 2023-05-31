@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mossy_vibes/src/services/analytics_service.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -7,9 +8,9 @@ import 'src/services/router.dart';
 import 'src/utils/theme.dart';
 
 void main() async {
-  const sentryDsn = String.fromEnvironment('sentry_dsn');
+  const sentryDsn = String.fromEnvironment('SENTRY_DSN');
   double sampleRate =
-      double.tryParse(const String.fromEnvironment('sentry_sample_rate')) ??
+      double.tryParse(const String.fromEnvironment('SENTRY_SAMPLE_RATE')) ??
           1.0;
 
   // the application is wrapped in Sentry to aid in error reporting and basic
@@ -17,6 +18,14 @@ void main() async {
   await SentryFlutter.init((options) {
     options.dsn = sentryDsn;
     options.tracesSampleRate = sampleRate;
+    options.beforeSend = (event, {hint}) async {
+      if (await AnalyticsService().analyticsDisabled) {
+        print('INFO: sentry log not sent because analytics are disabled');
+        return null;
+      } else {
+        return event.copyWith(serverName: null); // remove device ID
+      }
+    };
   }, appRunner: () {
     WidgetsFlutterBinding.ensureInitialized();
     // await Firebase.initializeApp(

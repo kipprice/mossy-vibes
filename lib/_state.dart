@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mossy_vibes/src/models/breath_pattern.dart';
 import 'package:mossy_vibes/src/models/exercise.dart';
 import 'package:mossy_vibes/src/models/preferences.dart';
+import 'package:mossy_vibes/src/services/analytics_service.dart';
 import 'package:mossy_vibes/src/services/exercise_service.dart';
 import 'package:mossy_vibes/src/services/preferences_service.dart';
 
@@ -61,6 +62,8 @@ class MossyVibesState extends ChangeNotifier {
   void changeReadingSpeed(int wpm) {
     preferences.readingSpeedInWpm = wpm;
     PreferencesService().save(preferences);
+    AnalyticsService().track(AnalyticEventType.settingsChanged,
+        {'type': 'readingSpeed', 'value': wpm});
     notifyListeners();
   }
 
@@ -71,6 +74,8 @@ class MossyVibesState extends ChangeNotifier {
   void changeBreathPattern(BreathPattern pattern) {
     preferences.breathPattern = pattern;
     PreferencesService().save(preferences);
+    AnalyticsService().track(AnalyticEventType.settingsChanged,
+        {'type': 'breathPattern', 'value': pattern.name});
     notifyListeners();
   }
 }

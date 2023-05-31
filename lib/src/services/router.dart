@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mossy_vibes/src/widgets/screens/about_screen.dart';
+import 'package:mossy_vibes/src/widgets/screens/about/about_screen.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercise/exercise_screen.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercises/exercises_screen.dart';
 import 'package:mossy_vibes/src/widgets/screens/settings/settings_screen.dart';

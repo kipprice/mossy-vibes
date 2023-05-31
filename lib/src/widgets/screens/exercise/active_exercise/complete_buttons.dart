@@ -4,7 +4,7 @@ import 'package:mossy_vibes/src/widgets/atoms/animate_fade.dart';
 import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 
 import '../../../../utils/theme.dart';
-import '../../../atoms/inline_button.dart';
+import '../../../atoms/secondary_button.dart';
 import '../exercise_state.dart';
 
 class CompleteButtons extends StatelessWidget {
@@ -22,7 +22,7 @@ class CompleteButtons extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: InlineButton(
+              child: SecondaryButton(
                   onPressed: () {
                     context.go('/exercises');
                   },
@@ -33,7 +33,7 @@ class CompleteButtons extends StatelessWidget {
             ),
             SizedBox(width: MossyPadding.lg),
             Expanded(
-                child: InlineButton(
+                child: SecondaryButton(
                     onPressed: exerciseState.onReset,
                     child: MText(
                       'Restart',
