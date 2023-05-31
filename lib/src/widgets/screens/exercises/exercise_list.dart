@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mossy_vibes/src/models/exercise.dart';
+import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../_state.dart';
@@ -70,6 +71,12 @@ class ExerciseList extends StatelessWidget {
                 exercise: ex,
                 preferences: appState.preferences,
               ),
+            (exercises.isEmpty
+                ? MText(
+                    '(No exercises match the current filters)',
+                    fontSize: MossyFontSize.sm,
+                  )
+                : Container())
           ],
         ),
       ),

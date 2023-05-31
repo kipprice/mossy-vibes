@@ -49,7 +49,6 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             FiltersBar(
               filters: filters,
               onChangeFilters: (Filters f) {
-                print('UPDATING ${f.exerciseType}');
                 setState(() {
                   filters = f;
                 });

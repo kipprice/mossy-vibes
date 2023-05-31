@@ -26,12 +26,12 @@ const exercises = [
 
 const testExercises = ['_test', '_kindness'];
 
-class ExerciseLoader {
+class ExerciseService {
   final storageFile = 'exercises.json';
   final exercisesKey = 'exercises';
 
-  static final ExerciseLoader _exerciseLoader = ExerciseLoader._init();
-  ExerciseLoader._init();
+  static final ExerciseService _exerciseLoader = ExerciseService._init();
+  ExerciseService._init();
 
   /// Loads in the exercise files available in Mossy Vibes.
   ///
@@ -42,7 +42,7 @@ class ExerciseLoader {
   ///
   /// In addition to loading exercises, this loader helps ensure that exercises
   /// are available when the app is offline.
-  factory ExerciseLoader() {
+  factory ExerciseService() {
     return _exerciseLoader;
   }
 

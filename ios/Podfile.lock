@@ -35,6 +35,8 @@ PODS:
   - SentryPrivate (8.7.2)
   - url_launcher_ios (0.0.1):
     - Flutter
+  - wakelock (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
@@ -44,6 +46,7 @@ DEPENDENCIES:
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - wakelock (from `.symlinks/plugins/wakelock/ios`)
 
 SPEC REPOS:
   trunk:
@@ -71,6 +74,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sentry_flutter/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
+  wakelock:
+    :path: ".symlinks/plugins/wakelock/ios"
 
 SPEC CHECKSUMS:
   connectivity_plus: 07c49e96d7fc92bc9920617b83238c4d178b446a
@@ -88,6 +93,7 @@ SPEC CHECKSUMS:
   sentry_flutter: 354c51276054f9f8a9b276967172aeb2e91d8a69
   SentryPrivate: 760a9fd5d134c4d926c4c0afe9c4deceadbf4557
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
+  wakelock: b0843b2479edbf6504d8d262c2959446f35373aa
 
 PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
 

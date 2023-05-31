@@ -26,11 +26,12 @@ class UserPreferences {
   /// is working across two different devices, we may end up needing to create
   /// a syncing mechanism -- maybe a unique code with the preferences encoded,
   /// or a unique code per device that can be linked together
-  UserPreferences(
-      {this.breathPattern = BreathPattern.calm,
-      this.completedExercises = const [],
-      this.readingSpeedInWpm = 150,
-      this.favorites = const []});
+  UserPreferences({
+    this.breathPattern = BreathPattern.calm,
+    this.completedExercises = const [],
+    this.readingSpeedInWpm = 150,
+    this.favorites = const [],
+  });
 
   /// How long the "in" part of the user's breath pattern is
   int get inBreathInSeconds => breathPattern.intake;

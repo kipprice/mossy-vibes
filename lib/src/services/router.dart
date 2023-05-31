@@ -6,6 +6,7 @@ import 'package:mossy_vibes/src/widgets/screens/exercises/exercises_screen.dart'
 import 'package:mossy_vibes/src/widgets/screens/settings/settings_screen.dart';
 
 import '../widgets/screens/home_screen.dart';
+import 'analytics_service.dart';
 
 const homeRouteName = 'Home';
 const settingsRouteName = 'Settings';
@@ -17,6 +18,7 @@ const exerciseRouteName = ':exerciseId';
 /// application, using native defaults for navigation.
 final mossyRouter = GoRouter(
   initialLocation: '/',
+  observers: [MossyObserver()],
   routes: [
     GoRoute(
         name: homeRouteName,
@@ -84,20 +86,19 @@ class MossyObserver extends NavigatorObserver {
 
   void logRouteChange(Route<dynamic> route) {
     final toName = _getRouteName(route);
-    // Wakelock.disable();
 
     switch (route.settings.name) {
       case exerciseRouteName:
-        // AnalyticsService()
-        //     .track(AnalyticEventType.exerciseVisited, {'exerciseId': toName});
+        AnalyticsService()
+            .track(AnalyticEventType.exerciseVisited, {'exerciseId': toName});
         break;
 
       case settingsRouteName:
-        // AnalyticsService().track(AnalyticEventType.settingsVisited);
+        AnalyticsService().track(AnalyticEventType.settingsVisited);
         break;
 
       case aboutRouteName:
-        // AnalyticsService().track(AnalyticEventType.aboutVisited);
+        AnalyticsService().track(AnalyticEventType.aboutVisited);
         break;
 
       default:

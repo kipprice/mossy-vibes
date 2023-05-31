@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mossy_vibes/src/models/prompt.dart';
+import 'package:mossy_vibes/src/services/wakelock_service.dart';
+import 'package:wakelock/wakelock.dart';
 
 import '../../../models/exercise.dart';
+import 'package:flutter/foundation.dart' as flutter_config;
 
 class ExerciseContextWidget extends StatefulWidget {
   final Exercise exercise;
@@ -20,6 +23,12 @@ class ExerciseContextWidgetState extends State<ExerciseContextWidget> {
   bool isBreathAnimationOn = false;
 
   @override
+  void dispose() {
+    super.dispose();
+    WakelockService().disable();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ExerciseContext(
       exercise: widget.exercise,
@@ -31,7 +40,7 @@ class ExerciseContextWidgetState extends State<ExerciseContextWidget> {
     );
   }
 
-  void onNext() {
+  void onNext() async {
     if (!mounted) {
       return;
     }
@@ -45,6 +54,7 @@ class ExerciseContextWidgetState extends State<ExerciseContextWidget> {
         }
       });
     } else {
+      await WakelockService().disable();
       setState(() {
         isComplete = true;
       });
@@ -62,7 +72,16 @@ class ExerciseContextWidgetState extends State<ExerciseContextWidget> {
     });
   }
 
-  void onStart() {
+  void onPause() {
+    // TODO: implement
+  }
+
+  void onBack() {
+    // TODO: implement
+  }
+
+  void onStart() async {
+    await WakelockService().enable();
     onNext();
   }
 }

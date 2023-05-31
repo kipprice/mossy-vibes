@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mossy_vibes/src/models/breath_pattern.dart';
 import 'package:mossy_vibes/src/models/exercise.dart';
 import 'package:mossy_vibes/src/models/preferences.dart';
-import 'package:mossy_vibes/src/services/exercise_loader.dart';
-import 'package:mossy_vibes/src/services/preferences_loader.dart';
+import 'package:mossy_vibes/src/services/exercise_service.dart';
+import 'package:mossy_vibes/src/services/preferences_service.dart';
 
 enum MossyStatus { loading, ready, error, uninitialized }
 
@@ -28,9 +28,9 @@ class MossyVibesState extends ChangeNotifier {
   Future<void> _initState(AssetBundle bundle) async {
     if (status == MossyStatus.uninitialized) {
       try {
-        preferences = await PreferencesLoader().load(preferences);
+        preferences = await PreferencesService().load(preferences);
         print('preferences loaded!');
-        exercises = await ExerciseLoader().loadAllExercises(bundle);
+        exercises = await ExerciseService().loadAllExercises(bundle);
         print('exercises loaded!');
         status = MossyStatus.ready;
       } catch (e) {
@@ -50,7 +50,7 @@ class MossyVibesState extends ChangeNotifier {
     } else {
       preferences.favorites.add(exerciseId);
     }
-    PreferencesLoader().save(preferences);
+    PreferencesService().save(preferences);
     notifyListeners();
   }
 
@@ -60,7 +60,7 @@ class MossyVibesState extends ChangeNotifier {
   /// into local storage.
   void changeReadingSpeed(int wpm) {
     preferences.readingSpeedInWpm = wpm;
-    PreferencesLoader().save(preferences);
+    PreferencesService().save(preferences);
     notifyListeners();
   }
 
@@ -70,7 +70,7 @@ class MossyVibesState extends ChangeNotifier {
   /// into local storage.
   void changeBreathPattern(BreathPattern pattern) {
     preferences.breathPattern = pattern;
-    PreferencesLoader().save(preferences);
+    PreferencesService().save(preferences);
     notifyListeners();
   }
 }

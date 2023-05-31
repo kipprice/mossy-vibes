@@ -4,22 +4,23 @@ import '../models/preferences.dart';
 
 /// The PreferencesLoader ensures that the preferences stored by the user
 /// locally are retrievable and usable.
-class PreferencesLoader {
-  static final PreferencesLoader _preferencesLoader = PreferencesLoader._init();
-  PreferencesLoader._init();
+class PreferencesService {
+  static final PreferencesService _preferencesLoader =
+      PreferencesService._init();
+  PreferencesService._init();
 
   /// Handles syncing preferences to and from the local storage.
   ///
   /// The PreferencesLoader helps facilitate the translation between model and
   /// JSON representation.
-  factory PreferencesLoader() {
+  factory PreferencesService() {
     return _preferencesLoader;
   }
 
   final storageFile = 'user.json';
 
   /// Sync any preferences in local storage to the preferences in local state.
-  Future<UserPreferences> load(UserPreferences? initialPreferences) async {
+  Future<UserPreferences> load([UserPreferences? initialPreferences]) async {
     final LocalStorage storage = LocalStorage(storageFile);
     final defaultPreferences = initialPreferences ?? UserPreferences();
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mossy_vibes/src/services/analytics_service.dart';
 import 'package:mossy_vibes/src/widgets/molecules/share_links/generate_links.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -86,6 +87,7 @@ class ShareLinks extends StatelessWidget {
         ShareSection(title: 'Donate', children: [
           IconButton(
               onPressed: () {
+                AnalyticsService().track(AnalyticEventType.donateClicked);
                 launchUrl(links.donate!);
               },
               icon: bmcLogo)
