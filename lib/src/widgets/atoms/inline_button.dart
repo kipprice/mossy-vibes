@@ -1,18 +1,28 @@
+import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:flutter/material.dart';
+import 'package:mossy_vibes/src/widgets/atoms/mossy_text.dart';
 
 import '../../utils/theme.dart';
 
 class InlineButton extends StatelessWidget {
   final void Function()? onPressed;
-  final Widget child;
+  final String child;
+  final double fontSize;
+  final MFontWeight fontWeight;
+  final Color color;
 
-  InlineButton({required this.onPressed, required this.child});
+  InlineButton(
+      {required this.onPressed,
+      required this.child,
+      this.color = MossyColors.lightGreen,
+      this.fontSize = MossyFontSize.md,
+      this.fontWeight = MFontWeight.base});
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-    return OutlinedButton(
+    return TextButton(
       onPressed: onPressed,
       style: ButtonStyle(
           foregroundColor: MaterialStateProperty.resolveWith(
@@ -23,9 +33,20 @@ class InlineButton extends StatelessWidget {
               )),
           padding: MaterialStateProperty.resolveWith((states) =>
               EdgeInsets.all(width > 600 ? MossyPadding.lg : MossyPadding.sm)),
-          overlayColor: MaterialStateColor.resolveWith(
-              (states) => MossyColors.lightGreen.withAlpha(20))),
-      child: child,
+          overlayColor:
+              MaterialStateColor.resolveWith((states) => color.withAlpha(20))),
+      child: DecoratedBox(
+          decoration: DottedDecoration(
+              linePosition: LinePosition.bottom,
+              dash: [2, 4],
+              strokeWidth: 2,
+              color: MossyColors.lightGreen),
+          child: MText(
+            child,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: color,
+          )),
     );
   }
 }
