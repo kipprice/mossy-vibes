@@ -38,6 +38,15 @@ class ExerciseList extends StatelessWidget {
   Widget build(BuildContext context) {
     MossyVibesState appState = context.watch<MossyVibesState>();
 
+    if (appState.status != MossyStatus.ready) {
+      return Padding(
+        padding: const EdgeInsets.all(MossyPadding.xl),
+        child: CircularProgressIndicator(
+          color: MossyColors.offWhite,
+        ),
+      );
+    }
+
     final exercises = appState.exercises
         .where((ex) =>
             ex.size == mode &&

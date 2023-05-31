@@ -27,48 +27,35 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
   Widget build(BuildContext context) {
     MossyVibesState appState = context.watch<MossyVibesState>();
 
-    if (appState.status != MossyStatus.ready) {
-      return MossyPageWithHeader(
-        title: 'All Exercises',
-        body: Column(
-          children: [
-            Center(
-              child: Text('loading'),
-            ),
-          ],
-        ),
-      );
-    } else {
-      return MossyPageWithHeader(
-        title: 'All Exercises',
-        padding: 0.0,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            FiltersBar(
-              filters: filters,
-              onChangeFilters: (Filters f) {
-                setState(() {
-                  filters = f;
-                });
-              },
-            ),
-            Expanded(
-              child: Stack(children: [
-                ExerciseList(
-                    mode: ExerciseSize.normal,
-                    isVisible: filters.exerciseSize == ExerciseSize.normal,
-                    filters: filters),
-                ExerciseList(
-                    mode: ExerciseSize.micro,
-                    isVisible: filters.exerciseSize == ExerciseSize.micro,
-                    filters: filters)
-              ]),
-            )
-          ],
-        ),
-      );
-    }
+    return MossyPageWithHeader(
+      title: 'All Exercises',
+      padding: 0.0,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          FiltersBar(
+            filters: filters,
+            onChangeFilters: (Filters f) {
+              setState(() {
+                filters = f;
+              });
+            },
+          ),
+          Expanded(
+            child: Stack(children: [
+              ExerciseList(
+                  mode: ExerciseSize.normal,
+                  isVisible: filters.exerciseSize == ExerciseSize.normal,
+                  filters: filters),
+              ExerciseList(
+                  mode: ExerciseSize.micro,
+                  isVisible: filters.exerciseSize == ExerciseSize.micro,
+                  filters: filters)
+            ]),
+          )
+        ],
+      ),
+    );
   }
 }
