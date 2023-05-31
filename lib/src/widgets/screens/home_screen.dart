@@ -5,7 +5,7 @@ import 'package:mossy_vibes/src/widgets/molecules/mossy_log.dart';
 
 import '../../utils/theme.dart';
 import '../atoms/cta_button.dart';
-import '../atoms/inline_button.dart';
+import '../atoms/secondary_button.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Expanded(
-                                  child: InlineButton(
+                                  child: SecondaryButton(
                                       onPressed: () {
                                         context.go('/settings');
                                       },
@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                                   width: MossyPadding.lg,
                                 ),
                                 Expanded(
-                                  child: InlineButton(
+                                  child: SecondaryButton(
                                       onPressed: () {
                                         context.go('/about');
                                       },

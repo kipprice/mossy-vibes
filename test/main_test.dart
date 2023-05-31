@@ -8,7 +8,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mossy_vibes/main.dart';
 import 'package:mossy_vibes/src/widgets/atoms/cta_button.dart';
-import 'package:mossy_vibes/src/widgets/atoms/inline_button.dart';
+import 'package:mossy_vibes/src/widgets/atoms/secondary_button.dart';
 
 void main() {
   group('The Mossy Vibes app', () {
@@ -16,7 +16,7 @@ void main() {
       await tester.pumpWidget(const MossyVibes());
       expect(find.text('Mossy Vibes'), findsOneWidget);
       expect(find.byType(CTAButton), findsOneWidget);
-      expect(find.byType(InlineButton), findsNWidgets(2));
+      expect(find.byType(SecondaryButton), findsNWidgets(2));
     });
   });
 }
