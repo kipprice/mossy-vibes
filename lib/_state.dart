@@ -30,9 +30,7 @@ class MossyVibesState extends ChangeNotifier {
     if (status == MossyStatus.uninitialized) {
       try {
         preferences = await PreferencesService().load(preferences);
-        print('preferences loaded!');
         exercises = await ExerciseService().loadAllExercises(bundle);
-        print('exercises loaded!');
         status = MossyStatus.ready;
       } catch (e) {
         print('INITIALIZATION ERROR: ${e.toString()}');
@@ -62,7 +60,7 @@ class MossyVibesState extends ChangeNotifier {
   void changeReadingSpeed(int wpm) {
     preferences.readingSpeedInWpm = wpm;
     PreferencesService().save(preferences);
-    AnalyticsService().track(AnalyticEventType.settingsChanged,
+    AnalyticsService().track(AnalyticsEventType.settingsChanged,
         {'type': 'readingSpeed', 'value': wpm});
     notifyListeners();
   }
@@ -74,7 +72,7 @@ class MossyVibesState extends ChangeNotifier {
   void changeBreathPattern(BreathPattern pattern) {
     preferences.breathPattern = pattern;
     PreferencesService().save(preferences);
-    AnalyticsService().track(AnalyticEventType.settingsChanged,
+    AnalyticsService().track(AnalyticsEventType.settingsChanged,
         {'type': 'breathPattern', 'value': pattern.name});
     notifyListeners();
   }

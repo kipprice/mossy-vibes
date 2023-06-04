@@ -87,7 +87,7 @@ class ShareLinks extends StatelessWidget {
         ShareSection(title: 'Donate', children: [
           IconButton(
               onPressed: () {
-                AnalyticsService().track(AnalyticEventType.donateClicked);
+                AnalyticsService().track(AnalyticsEventType.donateClicked);
                 launchUrl(links.donate!);
               },
               icon: bmcLogo)

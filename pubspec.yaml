@@ -51,6 +51,7 @@ dependencies:
   flutter_dotenv: ^5.0.2
   sentry_flutter: ^7.6.2
   wakelock: ^0.4.0
+  amplitude_flutter: ^3.14.0
 
 dependency_overrides:
   http: ^1.0.0

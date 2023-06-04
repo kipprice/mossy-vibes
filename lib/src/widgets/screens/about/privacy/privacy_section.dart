@@ -32,7 +32,6 @@ class _PrivacySectionState extends State<PrivacySection> {
   Future<void> toggleCollectionOfAnalytics(bool disableAnalytics) async {
     await AnalyticsService().toggleCollectionOfAnalytics(disableAnalytics);
     final tmpAnalyticsDisabled = await AnalyticsService().analyticsDisabled;
-    print('analytics status: $tmpAnalyticsDisabled');
     setState(() {
       analyticsDisabled = tmpAnalyticsDisabled;
     });

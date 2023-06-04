@@ -18,7 +18,7 @@ class CompleteButtons extends StatelessWidget {
     return AnimateFadeAndRemove(
       isVisible: isComplete,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: MossyPadding.xl),
+        padding: const EdgeInsets.symmetric(horizontal: MossyPadding.md),
         child: Row(
           children: [
             Expanded(

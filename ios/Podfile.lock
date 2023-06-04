@@ -1,4 +1,10 @@
 PODS:
+  - Amplitude (8.14.0):
+    - AnalyticsConnector (~> 1.0.0)
+  - amplitude_flutter (0.0.1):
+    - Amplitude (= 8.14.0)
+    - Flutter
+  - AnalyticsConnector (1.0.1)
   - connectivity_plus (0.0.1):
     - Flutter
     - ReachabilitySwift
@@ -39,6 +45,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - amplitude_flutter (from `.symlinks/plugins/amplitude_flutter/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
@@ -50,6 +57,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Amplitude
+    - AnalyticsConnector
     - Firebase
     - FirebaseCore
     - FirebaseCoreInternal
@@ -60,6 +69,8 @@ SPEC REPOS:
     - SentryPrivate
 
 EXTERNAL SOURCES:
+  amplitude_flutter:
+    :path: ".symlinks/plugins/amplitude_flutter/ios"
   connectivity_plus:
     :path: ".symlinks/plugins/connectivity_plus/ios"
   firebase_core:
@@ -78,6 +89,9 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/wakelock/ios"
 
 SPEC CHECKSUMS:
+  Amplitude: bff4ceaad2a79e908682134d75dc862960594ea6
+  amplitude_flutter: c9e02275996053186318b8821e7e87a1d1918a23
+  AnalyticsConnector: eccd7e1cd3dd18e6bd09ac2506e37d4ed43ba3f4
   connectivity_plus: 07c49e96d7fc92bc9920617b83238c4d178b446a
   Firebase: bd152f0f3d278c4060c5c71359db08ebcfd5a3e2
   firebase_core: fc68c0f9eec4e800b9418deff14a7e0a504016f3
@@ -95,6 +109,6 @@ SPEC CHECKSUMS:
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
   wakelock: b0843b2479edbf6504d8d262c2959446f35373aa
 
-PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
+PODFILE CHECKSUM: 6b9eb94e9f98a329f2ef624b852a6e42d090af2b
 
 COCOAPODS: 1.12.1

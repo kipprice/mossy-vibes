@@ -90,15 +90,15 @@ class MossyObserver extends NavigatorObserver {
     switch (route.settings.name) {
       case exerciseRouteName:
         AnalyticsService()
-            .track(AnalyticEventType.exerciseVisited, {'exerciseId': toName});
+            .track(AnalyticsEventType.exerciseVisited, {'exerciseId': toName});
         break;
 
       case settingsRouteName:
-        AnalyticsService().track(AnalyticEventType.settingsVisited);
+        AnalyticsService().track(AnalyticsEventType.settingsVisited);
         break;
 
       case aboutRouteName:
-        AnalyticsService().track(AnalyticEventType.aboutVisited);
+        AnalyticsService().track(AnalyticsEventType.aboutVisited);
         break;
 
       default:

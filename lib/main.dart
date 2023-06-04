@@ -20,7 +20,7 @@ void main() async {
     options.tracesSampleRate = sampleRate;
     options.beforeSend = (event, {hint}) async {
       if (await AnalyticsService().analyticsDisabled) {
-        print('INFO: sentry log not sent because analytics are disabled');
+        print('INFO: crash log not sent because analytics are disabled');
         return null;
       } else {
         return event.copyWith(serverName: null); // remove device ID

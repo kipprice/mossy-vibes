@@ -12,6 +12,7 @@ class MText extends StatelessWidget {
   final MFontWeight fontWeight;
   final double opacity;
   final bool underline;
+  final bool center;
 
   MText(this.content,
       {super.key,
@@ -19,7 +20,8 @@ class MText extends StatelessWidget {
       this.fontSize = MossyFontSize.md,
       this.fontWeight = MFontWeight.light,
       this.opacity = 1,
-      this.underline = false});
+      this.underline = false,
+      this.center = false});
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class MText extends StatelessWidget {
       child: Opacity(
         opacity: opacity,
         child: Text(content,
+            textAlign: (center ? TextAlign.center : TextAlign.left),
             style: GoogleFonts.quicksand(
                 textStyle: TextStyle(
                     color: color,
