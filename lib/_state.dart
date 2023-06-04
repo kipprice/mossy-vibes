@@ -32,8 +32,9 @@ class MossyVibesState extends ChangeNotifier {
         preferences = await PreferencesService().load(preferences);
         exercises = await ExerciseService().loadAllExercises(bundle);
         status = MossyStatus.ready;
-      } catch (e) {
+      } catch (e, stackTrace) {
         print('INITIALIZATION ERROR: ${e.toString()}');
+        print(stackTrace);
         status = MossyStatus.error;
       }
       notifyListeners();
