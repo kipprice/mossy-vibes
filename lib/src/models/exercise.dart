@@ -81,9 +81,9 @@ class Exercise {
   /// Calculates the amount of time, in minutes, it will take for the user to
   /// go through all of the Prompts included in this exercise
   ///
-  /// The amount of time in minutes is always rounded up to the nearest minute.
+  /// The amount of time in minutes is always rounded to the nearest minute.
   int getLengthInMinutes(UserPreferences preferences) {
-    return (getLengthInSeconds(preferences) / secondsPerMinute).ceil();
+    return (getLengthInSeconds(preferences) / secondsPerMinute).round();
   }
 
   /// Determines if this exercise has been flagged as a favorite by the user.
