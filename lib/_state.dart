@@ -35,7 +35,6 @@ class MossyVibesState extends ChangeNotifier {
         status = MossyStatus.ready;
       } catch (e, stackTrace) {
         print('INITIALIZATION ERROR: ${e.toString()}');
-        print(stackTrace);
         Sentry.captureException(e, stackTrace: stackTrace);
         status = MossyStatus.error;
       }
