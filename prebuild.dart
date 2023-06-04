@@ -12,6 +12,8 @@ Future<void> main(List<String> arguments) async {
 
   // generate the exercise config file
   await generateExerciseConfigFile();
+
+  print('DONE');
 }
 
 /// Creates a dynamic list of all of the bundled exercises.
@@ -22,6 +24,7 @@ Future<void> main(List<String> arguments) async {
 Future<void> generateExerciseConfigFile() async {
   final exerciseIds = await _loadExercises();
   await _generateFile(exerciseIds);
+  print('FILE GENERATED');
   // ExerciseBuckets buckets = ExerciseBuckets.fromList(exerciseNames);
   // await generateFile(buckets);
 }
