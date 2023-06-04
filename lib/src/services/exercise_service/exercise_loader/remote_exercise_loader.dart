@@ -64,20 +64,23 @@ class RemoteExerciseLoader extends ExerciseLoader {
 
     // loop through each file and add a loader for it, as long as we can figure
     // out where to retrieve it from
-    List<dynamic> listBody = jsonDecode(listResp.body);
-    List<RemoteExerciseLoader> out = [];
-    for (var fileDetails in listBody) {
-      RegExp idRegex = RegExp(r'/([^/]*?).md$');
-      RegExpMatch? idMatch =
-          idRegex.firstMatch(fileDetails['download_url'] ?? '');
-      if (idMatch == null || idMatch[1] == null) {
-        continue;
+    try {
+      List<dynamic> listBody = jsonDecode(listResp.body);
+      List<RemoteExerciseLoader> out = [];
+      for (var fileDetails in listBody) {
+        RegExp idRegex = RegExp(r'/([^/]*?).md$');
+        RegExpMatch? idMatch =
+            idRegex.firstMatch(fileDetails['download_url'] ?? '');
+        if (idMatch == null || idMatch[1] == null) {
+          continue;
+        }
+        out.add(RemoteExerciseLoader(
+            exerciseId: idMatch[1]!, downloadUri: fileDetails['download_url']));
       }
-      out.add(RemoteExerciseLoader(
-          exerciseId: idMatch[1]!, downloadUri: fileDetails['download_url']));
+      return out;
+    } catch (e) {
+      return [];
     }
-
-    return out;
   }
 
   /// helper function to determine whether it is worth trying to retrieve any
