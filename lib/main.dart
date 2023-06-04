@@ -31,6 +31,7 @@ void main() async {
     // await Firebase.initializeApp(
     //   options: DefaultFirebaseOptions.currentPlatform,
     // );
+    AnalyticsService().track(AnalyticsEventType.mossyVibesOpened);
     return runApp(SentryUserInteractionWidget(child: MossyVibes()));
   });
 }

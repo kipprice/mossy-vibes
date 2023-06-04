@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mossy_vibes/src/models/prompt.dart';
+import 'package:mossy_vibes/src/services/analytics_service.dart';
 import 'package:mossy_vibes/src/services/wakelock_service.dart';
-import 'package:wakelock/wakelock.dart';
 
 import '../../../models/exercise.dart';
-import 'package:flutter/foundation.dart' as flutter_config;
 
 class ExerciseContextWidget extends StatefulWidget {
   final Exercise exercise;
@@ -55,6 +54,8 @@ class ExerciseContextWidgetState extends State<ExerciseContextWidget> {
       });
     } else {
       await WakelockService().disable();
+      AnalyticsService().track(AnalyticsEventType.exerciseCompleted,
+          {'exerciseId': widget.exercise.id});
       setState(() {
         isComplete = true;
       });
@@ -65,6 +66,8 @@ class ExerciseContextWidgetState extends State<ExerciseContextWidget> {
     if (!mounted) {
       return;
     }
+    AnalyticsService().track(
+        AnalyticsEventType.exerciseStarted, {'exerciseId': widget.exercise.id});
     setState(() {
       currentPromptIdx = 0;
       isComplete = false;
@@ -82,6 +85,8 @@ class ExerciseContextWidgetState extends State<ExerciseContextWidget> {
 
   void onStart() async {
     await WakelockService().enable();
+    AnalyticsService().track(
+        AnalyticsEventType.exerciseStarted, {'exerciseId': widget.exercise.id});
     onNext();
   }
 }

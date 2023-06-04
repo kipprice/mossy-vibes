@@ -57,12 +57,16 @@ class MossyObserver extends NavigatorObserver {
 
   @override
   void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    logRouteChange(route);
+    if (previousRoute != null) {
+      logRouteChange(route);
+    }
   }
 
   @override
   void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    logRouteChange(route);
+    if (previousRoute != null) {
+      logRouteChange(route);
+    }
   }
 
   @override

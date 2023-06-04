@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: flutter build web --dart-define "AMPLITUDE_API_KEY=${{ secrets.AMPLITUDE_API_KEY }}" --dart-define "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" --dart-define "SENTRY_SAMPLE_RATE=0.25"
+      - run: flutter build web --dart-define "AMPLITUDE_API_KEY=${{ secrets.AMPLITUDE_API_KEY }}" --dart-define "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" --dart-define "SENTRY_SAMPLE_RATE=0.25" --dart-define "ENV=production"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"

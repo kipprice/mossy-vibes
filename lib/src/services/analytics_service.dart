@@ -5,6 +5,7 @@ const storageFile = 'analytics.json';
 
 class AnalyticsService {
   Amplitude? amplitude;
+  String environment = 'production';
 
   /// True if the user has declined collecting analytics on their system. The
   /// default is to collect analytics, since they are anonymized and not used
@@ -17,8 +18,11 @@ class AnalyticsService {
 
   static AnalyticsService _analyticsService = AnalyticsService._init();
   AnalyticsService._init() {
-    _loadAnalyticsStatus();
+    const String tmpEnv = String.fromEnvironment('ENV');
+    environment = tmpEnv;
+
     // make sure we establish that the user is opted out with Amplitude
+    _loadAnalyticsStatus();
     amplitude?.setOptOut(_analyticsDisabled!);
 
     _initAmplitude();
@@ -72,6 +76,7 @@ class AnalyticsService {
       final Map<String, dynamic> updatedProperties = Map.from(properties);
       updatedProperties['type'] = type.name;
       updatedProperties['group'] = type.groupName;
+      updatedProperties['env'] = environment;
 
       await amplitude!
           .logEvent(type.eventName, eventProperties: updatedProperties);
@@ -89,7 +94,8 @@ enum AnalyticsEventType {
   settingsVisited(eventName: 'Visited Settings', groupName: 'Visit'),
   settingsChanged(eventName: 'Changed Settings', groupName: 'Action'),
   aboutVisited(eventName: 'Visited About', groupName: 'Visit'),
-  donateClicked(eventName: 'Clicked Donate', groupName: 'Action');
+  donateClicked(eventName: 'Clicked Donate', groupName: 'Action'),
+  mossyVibesOpened(eventName: 'Visited Mossy Vibes', groupName: 'Visit');
 
   const AnalyticsEventType({required this.groupName, required this.eventName});
   final String groupName;
