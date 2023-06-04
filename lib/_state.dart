@@ -5,6 +5,7 @@ import 'package:mossy_vibes/src/models/preferences.dart';
 import 'package:mossy_vibes/src/services/analytics_service.dart';
 import 'package:mossy_vibes/src/services/exercise_service/exercise_service.dart';
 import 'package:mossy_vibes/src/services/preferences_service.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 enum MossyStatus { loading, ready, error, uninitialized }
 
@@ -35,6 +36,7 @@ class MossyVibesState extends ChangeNotifier {
       } catch (e, stackTrace) {
         print('INITIALIZATION ERROR: ${e.toString()}');
         print(stackTrace);
+        Sentry.captureException(e, stackTrace: stackTrace);
         status = MossyStatus.error;
       }
       notifyListeners();
