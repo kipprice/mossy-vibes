@@ -1,4 +1,4 @@
-package com.example.mossy_vibes_flutter
+package com.kipprice.mossy_vibes
 
 import io.flutter.embedding.android.FlutterActivity
 

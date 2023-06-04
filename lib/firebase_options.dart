@@ -66,8 +66,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '466747772062',
     projectId: 'mossy-vibes',
     storageBucket: 'mossy-vibes.appspot.com',
-    iosClientId: '466747772062-ocoq0f4hruhovf4m54furjjnojnektka.apps.googleusercontent.com',
-    iosBundleId: 'com.example.mossyVibesFlutter',
+    iosClientId:
+        '466747772062-ocoq0f4hruhovf4m54furjjnojnektka.apps.googleusercontent.com',
+    iosBundleId: 'com.kipprice.mossyVibes',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -76,7 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '466747772062',
     projectId: 'mossy-vibes',
     storageBucket: 'mossy-vibes.appspot.com',
-    iosClientId: '466747772062-69er48llra44qvgfpbs3aiprsqcagpf9.apps.googleusercontent.com',
-    iosBundleId: 'com.example.mossyVibesFlutter.RunnerTests',
+    iosClientId:
+        '466747772062-69er48llra44qvgfpbs3aiprsqcagpf9.apps.googleusercontent.com',
+    iosBundleId: 'com.kipprice.mossyVibes.RunnerTests',
   );
 }
