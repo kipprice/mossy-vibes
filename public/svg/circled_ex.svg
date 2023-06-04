@@ -1,7 +1,0 @@
-<svg  fill="none" xmlns="http://www.w3.org/2000/svg">
-<symbol id='main' viewBox="0 0 349 349">
-<circle cx="174.5" cy="174.5" r="154" stroke="currentColor" stroke-width="15"/>
-<path d="M112.963 112.963L236.151 236.152" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M236.151 112.963L112.963 236.152" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-</symbol>
-</svg>

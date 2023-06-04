@@ -1,0 +1,31 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "mossy_vibes_flutter",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define-from-file",
+        ".env.json",
+        "-d",
+        "92039B8B-B2E7-451C-9E3D-5B9EA220C333"
+      ]
+    },
+    {
+      "name": "mossy_vibes_flutter (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "mossy_vibes_flutter (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    }
+  ]
+}
