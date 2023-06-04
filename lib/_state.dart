@@ -3,7 +3,7 @@ import 'package:mossy_vibes/src/models/breath_pattern.dart';
 import 'package:mossy_vibes/src/models/exercise.dart';
 import 'package:mossy_vibes/src/models/preferences.dart';
 import 'package:mossy_vibes/src/services/analytics_service.dart';
-import 'package:mossy_vibes/src/services/exercise_service.dart';
+import 'package:mossy_vibes/src/services/exercise_service/exercise_service.dart';
 import 'package:mossy_vibes/src/services/preferences_service.dart';
 
 enum MossyStatus { loading, ready, error, uninitialized }

@@ -3,9 +3,7 @@ import 'package:mossy_vibes/src/models/exercise.dart';
 import 'package:mossy_vibes/src/models/filters.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercises/exercise_list.dart';
 import 'package:mossy_vibes/src/widgets/screens/exercises/filters/filter_bar.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../_state.dart';
 import '../../molecules/page_with_header/page_with_header.dart';
 
 class ExercisesScreen extends StatefulWidget {
@@ -25,8 +23,6 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    MossyVibesState appState = context.watch<MossyVibesState>();
-
     return MossyPageWithHeader(
       title: 'All Exercises',
       padding: 0.0,

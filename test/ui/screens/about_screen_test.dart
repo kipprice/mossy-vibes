@@ -3,8 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mossy_vibes/src/widgets/screens/about/about_screen.dart';
 
 void main() {
-  final TestWidgetsFlutterBinding binding =
-      TestWidgetsFlutterBinding.ensureInitialized();
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   Widget testBuilder(Widget childToTest) {
     return MaterialApp(home: childToTest);
@@ -16,7 +15,7 @@ void main() {
       try {
         await tester.pumpWidget(testBuilder(AboutScreen()));
         expect(find.textContaining('Welcome'), findsOneWidget);
-      } catch (e, stackTrace) {
+      } catch (e) {
         print(e.toString());
       }
     });
