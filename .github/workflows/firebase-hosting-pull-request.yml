@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: sudo snap install flutter --classic
+      - run: sudo snap install flutter --classic && flutter
       - run: dart run ./prebuild.dart
       - run: cat ./assets/exercises/__exercises.json
       - run: >-
