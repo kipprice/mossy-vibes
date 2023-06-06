@@ -99,11 +99,10 @@ class _BreathAnimationState extends State<BreathAnimation>
     );
 
     if (!widget.isVisible) {
-      breathController?.stop();
       breathController?.reset();
     } else if (widget.isPaused) {
       breathController?.stop();
-    } else {
+    } else if (breathController?.isAnimating != true) {
       breathController?.repeat();
     }
 

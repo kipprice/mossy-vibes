@@ -4,7 +4,7 @@ This exercise helps you find a moment to relieve some stress
 Start by breathing in... / hold... / and out
 As you breathe out, imagine releasing a bit of your stress
 You can also try repeating a calming phrase, like "it's okay", as you breathe out
-With your breath, carry this stress out of your body and mind.
+With your breath, release this stress from your body and mind.
 
 Any time you are feeling very stressed, try returning to this practice
 
