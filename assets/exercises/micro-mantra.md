@@ -16,7 +16,7 @@ Last, speak your mantra out loud
 
 /
 
-If through all this, the mantra still resonates with you, try using it the next time you meditate
+If the mantra still resonates with you, try using it the next time you meditate
 If it seems a little silly now, or if you found yourself getting bored with it, feel free to try out a new mantra with this exercise
 
 [_meta:author]:- "Kip"
