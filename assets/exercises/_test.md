@@ -1,5 +1,5 @@
 # Testing Exercise
-This is an example. This should break at a kinda awkward place for this text.
+This is an example | This should break at a kinda awkward place for this text
 
 Full breath test
 Evenly / broken / up

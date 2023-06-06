@@ -135,18 +135,21 @@ class Prompt {
   /// prompt is empty, it returns an empty array
   List<String> splitIntoWords() {
     final RegExp whitespace = RegExp(r'\s+');
-    final RegExp lineBreak = RegExp(r'[.!;:?]$');
+    final RegExp lineBreak = RegExp(r'[.!;:?|]$');
 
     final List<String> words = content.trim().split(whitespace);
 
     final List<String> out = [];
     for (var w in words) {
+      // add the word, if it is not empty
       final word = w.trim();
-      if (word.isEmpty) {
-        continue;
+      final addableWord = word.replaceAll('|', '');
+      if (addableWord.isNotEmpty) {
+        out.add(addableWord);
       }
+
+      // add a line break if relevant
       final hasLineBreak = lineBreak.hasMatch(word);
-      out.add(word.replaceFirst(RegExp(r'[.]$'), ''));
       if (hasLineBreak) {
         out.add('¶');
       }
