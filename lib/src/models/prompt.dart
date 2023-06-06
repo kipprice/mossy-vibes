@@ -63,7 +63,10 @@ class Prompt {
 
     final secondsToRead =
         _calculateTimeToRead(content, preferences.calculateSecondsPerWord());
-    final int breathsToRead = (secondsToRead / fullBreath).ceil();
+    int breathsToRead = (secondsToRead / fullBreath).ceil();
+    if (breathsToRead == 0) {
+      breathsToRead = 1;
+    }
 
     switch (type) {
       case BreathType.full:
@@ -129,7 +132,7 @@ class Prompt {
   /// and the timing functions to add in some additional respective spacing.
   ///
   /// This function assumes that the prompt is a non-null string. If the provided
-  /// prompt is empty,
+  /// prompt is empty, it returns an empty array
   List<String> splitIntoWords() {
     final RegExp whitespace = RegExp(r'\s+');
     final RegExp lineBreak = RegExp(r'[.!;:?]$');
@@ -142,8 +145,9 @@ class Prompt {
       if (word.isEmpty) {
         continue;
       }
-      out.add(word);
-      if (lineBreak.hasMatch(word)) {
+      final hasLineBreak = lineBreak.hasMatch(word);
+      out.add(word.replaceFirst(RegExp(r'[.]$'), ''));
+      if (hasLineBreak) {
         out.add('¶');
       }
     }
