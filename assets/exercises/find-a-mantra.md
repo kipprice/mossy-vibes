@@ -12,8 +12,8 @@ We're going to start by introducing some common or useful mantras
 With each one, try repeating it on each in-breath, hold, and out-breath
 We're starting with traditional Sanskrit mantras, which can be repeated in Sanskrit or as their English translations. 
 "Om". The sound of creation and the universe; represents the unity of the mind, body, and soul
-"So Hum", or "I am that". Recognizes your oneness with the universe.
-"Shanti", or "Peace". Represents internal and external harmony. 
+"So Hum" or "I am that". Recognizes your oneness with the universe.
+"Shanti" or "Peace". Represents internal and external harmony. 
 Next, let's try some affirmations. 
 "I am enough". Recognizes your inherent worthiness.
 "I am loved". Honors the connections you have with the world around you.
