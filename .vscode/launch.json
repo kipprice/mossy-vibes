@@ -5,7 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "mossy_vibes_flutter",
+      "name": "Mossy Vibes - Test Mode",
+      "request": "launch",
+      "type": "dart",
+      "args": ["-d", "chrome"],
+      "preLaunchTask": "Mossy Vibes: Prebuild"
+    },
+    {
+      "name": "Mossy Vibes - Dev Mode (iOS)",
       "request": "launch",
       "type": "dart",
       "args": [
@@ -13,16 +20,24 @@
         ".env.json",
         "-d",
         "B28DFB03-4ABC-4757-BF95-B16B79AC813"
-      ]
+      ],
+      "preLaunchTask": "Mossy Vibes: Prebuild"
     },
     {
-      "name": "mossy_vibes_flutter (profile mode)",
+      "name": "Mossy Vibes - Dev Mode (web)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--dart-define-from-file", ".env.json", "-d", "chrome"],
+      "preLaunchTask": "Mossy Vibes: Prebuild"
+    },
+    {
+      "name": "Mossy Vibes - Profile Mode",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
     },
     {
-      "name": "mossy_vibes_flutter (release mode)",
+      "name": "Mossy Vibes - Release Mode",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"

@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "dart",
+      "command": "dart",
+      "args": ["run", "./prebuild.dart"],
+      "group": "build",
+      "problemMatcher": [],
+      "label": "Mossy Vibes: Prebuild"
+    }
+  ]
+}
