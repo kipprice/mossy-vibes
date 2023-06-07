@@ -1,4 +1,4 @@
-# Finding Stability
+# Creating Stability
 There's a lot in the world that can make us doubt ourselves or others
 The world around us is always changing | As is our position within it
 As humans, we often try to force stability into our world
