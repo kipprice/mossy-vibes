@@ -1,4 +1,4 @@
-# Micro Meditation: Calm
+# Micro Calm
 It can be hard to expect yourself to just "keep calm"
 Today we'll be using meditation to find calmness
 

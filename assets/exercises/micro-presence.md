@@ -1,4 +1,4 @@
-# Micro Meditation: Presence
+# Micro Presence
 This exercise helps bring your focus back to the "now"
 
 Start by breathing in... / hold... / and out

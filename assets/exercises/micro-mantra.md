@@ -1,4 +1,4 @@
-# Micro Meditation: Mantra Test
+# Micro Mantra Test
 This exercise helps you try out a new mantra to see if it helps you
 First, try repeating your mantra on your in-breath, hold, and out-breath
 

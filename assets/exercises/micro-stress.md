@@ -1,4 +1,4 @@
-# Micro Meditation: Stress
+# Micro Stress
 This exercise helps you find a moment to relieve some stress
 
 Start by breathing in... / hold... / and out
