@@ -63,7 +63,7 @@ class ExerciseLine extends StatelessWidget {
           Expanded(
             child: TextButton(
               style: ButtonStyle(
-                shape: MaterialStateProperty.resolveWith((states) =>
+                shape: WidgetStateProperty.resolveWith((states) =>
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(MossyPadding.lg))),
               ),

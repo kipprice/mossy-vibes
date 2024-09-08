@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:mossy_vibes/src/services/analytics_service.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -32,6 +33,7 @@ void main() async {
     //   options: DefaultFirebaseOptions.currentPlatform,
     // );
     AnalyticsService().track(AnalyticsEventType.mossyVibesOpened);
+    FlutterNativeSplash.remove();
     return runApp(SentryUserInteractionWidget(child: MossyVibes()));
   });
 }
@@ -55,8 +57,6 @@ class MossyVibes extends StatelessWidget {
             useMaterial3: true,
             fontFamily: 'Quicksand',
             colorScheme: ColorScheme(
-                background: MossyColors.darkGreen,
-                onBackground: MossyColors.offWhite,
                 primary: MossyColors.darkGreen,
                 onPrimary: MossyColors.offWhite,
                 secondary: MossyColors.lightGreen,
@@ -64,8 +64,8 @@ class MossyVibes extends StatelessWidget {
                 brightness: Brightness.dark,
                 error: MossyColors.yellow,
                 onError: MossyColors.offBlack,
-                surface: Colors.transparent,
-                onSurface: MossyColors.offBlack)),
+                surface: MossyColors.darkGreen,
+                onSurface: MossyColors.offWhite)),
       ),
     );
   }

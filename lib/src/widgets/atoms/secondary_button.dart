@@ -15,15 +15,15 @@ class SecondaryButton extends StatelessWidget {
     return OutlinedButton(
       onPressed: onPressed,
       style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.resolveWith(
-              (states) => MossyColors.offWhite),
-          textStyle: MaterialStateProperty.resolveWith((states) => TextStyle(
+          foregroundColor:
+              WidgetStateProperty.resolveWith((states) => MossyColors.offWhite),
+          textStyle: WidgetStateProperty.resolveWith((states) => TextStyle(
                 fontSize: width > 600 ? MossyFontSize.lg : MossyFontSize.md,
                 fontFamily: 'Quicksand',
               )),
-          padding: MaterialStateProperty.resolveWith((states) =>
+          padding: WidgetStateProperty.resolveWith((states) =>
               EdgeInsets.all(width > 600 ? MossyPadding.lg : MossyPadding.sm)),
-          overlayColor: MaterialStateColor.resolveWith(
+          overlayColor: WidgetStateColor.resolveWith(
               (states) => MossyColors.lightGreen.withAlpha(20))),
       child: child,
     );

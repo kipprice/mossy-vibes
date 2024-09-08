@@ -14,11 +14,11 @@ class CTAButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-    Color getButtonBg(Set<MaterialState> states) {
+    Color getButtonBg(Set<WidgetState> states) {
       return MossyColors.offWhite;
     }
 
-    Color getButtonFg(Set<MaterialState> states) {
+    Color getButtonFg(Set<WidgetState> states) {
       return MossyColors.darkGreen;
     }
 
@@ -26,16 +26,15 @@ class CTAButton extends StatelessWidget {
       child: FilledButton(
         onPressed: onPressed,
         style: ButtonStyle(
-            textStyle: MaterialStateProperty.resolveWith((states) => TextStyle(
+            textStyle: WidgetStateProperty.resolveWith((states) => TextStyle(
                 fontSize: width > 600 ? MossyFontSize.xl : MossyFontSize.lg,
                 fontFamily: 'Quicksand',
                 fontWeight: FontWeight.w500)),
-            backgroundColor: MaterialStateProperty.resolveWith(getButtonBg),
-            foregroundColor: MaterialStateProperty.resolveWith(getButtonFg),
-            padding: MaterialStateProperty.resolveWith((states) =>
-                EdgeInsets.all(
-                    width > 600 ? MossyPadding.lg : MossyPadding.md)),
-            overlayColor: MaterialStateColor.resolveWith(
+            backgroundColor: WidgetStateProperty.resolveWith(getButtonBg),
+            foregroundColor: WidgetStateProperty.resolveWith(getButtonFg),
+            padding: WidgetStateProperty.resolveWith((states) => EdgeInsets.all(
+                width > 600 ? MossyPadding.lg : MossyPadding.md)),
+            overlayColor: WidgetStateColor.resolveWith(
                 (states) => MossyColors.lightGreen)),
         child: child,
       ),

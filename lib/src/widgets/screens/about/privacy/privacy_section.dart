@@ -77,9 +77,9 @@ class _PrivacySectionState extends State<PrivacySection> {
                     width: MossyPadding.md,
                   ),
                   Switch(
-                      thumbColor: MaterialStateProperty.resolveWith(
+                      thumbColor: WidgetStateProperty.resolveWith(
                           (states) => MossyColors.lightGreen),
-                      trackOutlineColor: MaterialStateProperty.resolveWith(
+                      trackOutlineColor: WidgetStateProperty.resolveWith(
                           (states) => MossyColors.lightGreen),
                       activeTrackColor: MossyColors.lightGreen.withAlpha(150),
                       value: analyticsDisabled!,

@@ -11,7 +11,7 @@ class SidebarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color getButtonFg(Set<MaterialState> states) {
+    Color getButtonFg(Set<WidgetState> states) {
       return MossyColors.offWhite;
     }
 
@@ -19,15 +19,15 @@ class SidebarButton extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
-            textStyle: MaterialStateProperty.resolveWith((states) => TextStyle(
+            textStyle: WidgetStateProperty.resolveWith((states) => TextStyle(
                   fontSize: MossyFontSize.lg,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Quicksand',
                 )),
-            foregroundColor: MaterialStateProperty.resolveWith(getButtonFg),
-            padding: MaterialStateProperty.resolveWith(
+            foregroundColor: WidgetStateProperty.resolveWith(getButtonFg),
+            padding: WidgetStateProperty.resolveWith(
                 (states) => EdgeInsets.all(MossyPadding.md)),
-            overlayColor: MaterialStateColor.resolveWith(
+            overlayColor: WidgetStateColor.resolveWith(
                 (states) => MossyColors.offWhite.withAlpha(40))),
         child: child,
       ),
