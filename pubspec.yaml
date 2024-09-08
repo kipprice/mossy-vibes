@@ -38,21 +38,21 @@ dependencies:
   localstorage: ^4.0.0+1
   flutter_svg: ^2.0.6
   flutter_feather_icons: ^2.0.0
-  go_router: ^7.0.2
+  go_router: ^14.2.3
   firebase_core: ^2.13.0
   animations: ^2.0.7
   url_launcher: ^6.1.11
   google_fonts: ^4.0.5
   dotted_decoration: ^2.0.0
   modal_bottom_sheet: ^3.0.0-pre
-  connectivity_plus: ^4.0.1
+  connectivity_plus: ^6.0.3
   dotenv: ^4.1.0
   http: ^1.0.0
   flutter_dotenv: ^5.0.2
-  sentry_flutter: ^7.6.2
-  wakelock: ^0.4.0
+  sentry_flutter: ^8.8.0
   amplitude_flutter: ^3.14.0
   flutter_native_splash: ^2.3.1
+  wakelock_plus: ^1.1.4
 
 dependency_overrides:
   http: ^1.0.0
@@ -67,7 +67,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

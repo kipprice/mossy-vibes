@@ -89,19 +89,16 @@ class RemoteExerciseLoader extends ExerciseLoader {
   /// Verifies that the user is connected to one potential internet source
   /// (wifi, ethernet, mobile data, or vpn).
   static Future<bool> get _isConnected async {
-    final connectivityResult = await (Connectivity().checkConnectivity());
+    final connectivityResults = await (Connectivity().checkConnectivity());
 
     // ensure there's a perceived connection before trying to retrieve exercises
     // from the open endpoint.
-    switch (connectivityResult) {
-      case ConnectivityResult.ethernet:
-      case ConnectivityResult.mobile:
-      case ConnectivityResult.vpn:
-      case ConnectivityResult.wifi:
-        return true;
+    final hasEthernet =
+        connectivityResults.contains(ConnectivityResult.ethernet);
+    final hasMobile = connectivityResults.contains(ConnectivityResult.mobile);
+    final hasVpn = connectivityResults.contains(ConnectivityResult.vpn);
+    final hasWifi = connectivityResults.contains(ConnectivityResult.wifi);
 
-      default:
-        return false;
-    }
+    return hasEthernet || hasMobile || hasVpn || hasWifi;
   }
 }

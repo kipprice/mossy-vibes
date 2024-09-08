@@ -18,7 +18,7 @@ void main() async {
   await SentryFlutter.init((options) {
     options.dsn = sentryDsn;
     options.tracesSampleRate = sampleRate;
-    options.beforeSend = (event, {hint}) async {
+    options.beforeSend = (event, hint) async {
       if (await AnalyticsService().analyticsDisabled) {
         print('INFO: crash log not sent because analytics are disabled');
         return null;
